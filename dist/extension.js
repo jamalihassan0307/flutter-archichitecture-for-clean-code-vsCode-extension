@@ -691,6 +691,9 @@ class SharedPrefHelper {
     return _prefs.getString(key);
   }
 
+
+  
+
   // Save a boolean value
   static saveBool(String key, bool value) async {
     await _prefs.setBool(key, value);
