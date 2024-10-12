@@ -1,6 +1,6 @@
 export class custom_snakbar {
 public static  fileTemplates: { [key: string]: string } = {
-custom_snackbar :  ` 
+  custom_snakbar :  ` 
 import 'package:flutter/material.dart';
 
 enum SnackbarType { error, info, success }
@@ -50,7 +50,6 @@ class CustomSnackbar {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
-}
 
 }`
 };

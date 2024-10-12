@@ -9,7 +9,7 @@ class Failure {
     required this.message,
     this.stackTrace = StackTrace.empty,
   });
-}
+
 
 }`
 };

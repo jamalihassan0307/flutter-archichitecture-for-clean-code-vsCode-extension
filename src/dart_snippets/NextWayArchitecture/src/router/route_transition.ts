@@ -40,7 +40,7 @@ CustomTransitionPage buildPageWithFadeTransition<T>({
   );
 }
 
-}`
+`
 };
  }
 

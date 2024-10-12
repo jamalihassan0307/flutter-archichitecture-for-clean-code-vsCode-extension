@@ -1,10 +1,10 @@
-export class shared_preferences {
+export class shared_pref_helper {
 public static  fileTemplates: { [key: string]: string } = {
-shared_preferences :  ` import '../../../../src/common/constants/global_variables.dart';
+  shared_pref_helper :  ` import '../../../../src/common/constants/global_variables.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+ import '../../../src/common/constants/static_data.dart';
 
-import '../constants/static_data';
 
 class SharedPrefHelper {
   static late SharedPreferences _prefs;
@@ -21,9 +21,7 @@ class SharedPrefHelper {
     StaticData.formIndex = await getInt(isFormFilledIndexText) ?? 0;
     StaticData.token = await getString(tokenText) ?? '';
     StaticData.address = await getString(addressText) ?? '';
-    StaticData.userLatLng = LatLng(
-        await getDouble(coordinatesLatitudeText) ?? 29.3881365,
-        await getDouble(coordinatesLongitudeText) ?? 71.7107774);
+  
   }
 
   // Save a string value
@@ -75,7 +73,7 @@ class SharedPrefHelper {
   static clearAll() async {
     await _prefs.clear();
   }
-}
+
 
 }`
 };

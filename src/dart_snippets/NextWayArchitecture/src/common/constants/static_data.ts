@@ -15,7 +15,7 @@ export class static_data {
   static bool pricingPackageChoosen = false;
 
   static String address = '';
-}
+
 
 }`
    };

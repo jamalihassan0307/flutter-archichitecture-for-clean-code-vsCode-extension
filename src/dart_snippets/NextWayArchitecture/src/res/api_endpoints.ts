@@ -17,7 +17,7 @@ api_endpoints :  ` class ApiEndpoints {
   }
 }
 
-}`
+`
 };
  }
 

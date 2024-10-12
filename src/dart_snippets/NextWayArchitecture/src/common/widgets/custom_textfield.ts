@@ -92,7 +92,7 @@ class CustomTextField extends StatelessWidget {
       ),
     );
   }
-}
+
 
 }`
 };

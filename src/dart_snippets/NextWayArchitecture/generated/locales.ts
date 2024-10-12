@@ -1,6 +1,7 @@
 export class locales {
 public static  fileTemplates: { [key: string]: string } = {
-locales :  ` class AppTranslation {
+locales :  ` 
+class AppTranslation {
   static Map<String, Map<String, String>> translations = {
     'en_US': Locales.en_US,
     // 'es_ES': Locales.es_ES,
@@ -16,15 +17,16 @@ locales :  ` class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
-  static const languages_languages = 'languages_languages';
+  static const english_languages = 'english_languages';
 }
 
 class Locales {
   static const en_US = {
-    'languages_languages': 'Languages',
+    'english_languages': 'English',
   };
 }
-}`
+
+`
 };
  }
 

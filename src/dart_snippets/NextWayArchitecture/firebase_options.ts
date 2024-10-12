@@ -1,8 +1,8 @@
 
 
-export class FirebaseOptions {
+export class firebase_options {
   public static  fileTemplates: { [key: string]: string } = {
-    FirebaseOptions: `
+    firebase_options: `
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;

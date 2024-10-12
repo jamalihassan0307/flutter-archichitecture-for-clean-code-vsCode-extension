@@ -5,7 +5,7 @@ export class language_services {
     
 
 import 'dart:ui';
-import '../../../../generated/locales.g.ts';
+import '../../../../generated/locales.g.dart';
 
 class LanguageServices {
   LanguageServices._();
@@ -17,7 +17,7 @@ class LanguageServices {
 
   Locale onLanguageSelected(String selectedLanguage) {
     switch (selectedLanguage.toLowerCase()) {
-      case LocaleKeys.languages_english:
+      case LocaleKeys.english_languages:
         return const Locale('en', 'US');
       // case LocaleKeys.languages_portuguese:
       //   return const Locale('pt', 'PT');
@@ -25,7 +25,7 @@ class LanguageServices {
         return const Locale('en', 'US');
     }
   }
-}
+
 
 }`
  };

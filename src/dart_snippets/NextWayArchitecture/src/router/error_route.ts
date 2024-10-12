@@ -17,7 +17,7 @@ class ErrorPage extends StatelessWidget {
   }
 }
 
-}`
+`
 };
  }
 

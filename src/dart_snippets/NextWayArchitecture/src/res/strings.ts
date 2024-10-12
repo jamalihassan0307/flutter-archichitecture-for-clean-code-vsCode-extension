@@ -32,7 +32,7 @@ class LogLabel {
   static const httpDelete = "HTTP/DELETE";
 }
 
-}`
+`
 };
  }
 

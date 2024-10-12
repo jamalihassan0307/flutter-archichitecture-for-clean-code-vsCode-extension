@@ -10,15 +10,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:device_preview/device_preview.dart';
 
-import 'package:{fileName}/firebase_options.dart';
-import 'package:{fileName}/src/common/constants/global_variables.dart';
-import 'package:{fileName}/src/common/constants/static_data.dart';
-import 'package:{fileName}/src/features/startup/location/provider/location_provider.dart';
-import 'package:{fileName}/src/common/services/language/language_services.dart';
-import 'package:{fileName}/src/router/routes.dart';
-import 'package:{fileName}/src/theme/app_theme.dart';
-import 'package:{fileName}/generated/locales.g.dart';
-import 'package:{fileName}/src/common/utils/shared_pref_helper.dart';
+import '../../../../firebase_options.dart';
+import '../../../../src/common/constants/global_variables.dart';
+import '../../../../src/router/routes.dart';
+import '../../../../src/theme/app_theme.dart';
+import '../../../../generated/locales.g.dart';
+import '../../../../src/common/utils/shared_pref_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +27,7 @@ void main() async {
     riverpod.ProviderScope(
       child: MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => LocationProvider()),
+          // ChangeNotifierProvider(create: (_) => LocationProvider()),
         ],
         child: const MyApp(),
       ),
@@ -55,7 +52,6 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           translationsKeys: AppTranslation.translations,
           fallbackLocale: const Locale('en', 'US'),
-          locale: getLanguage(),
           builder: DevicePreview.appBuilder,
           theme: AppTheme.instance.theme,
           routeInformationParser: MyAppRouter.router.routeInformationParser,
@@ -70,7 +66,5 @@ class MyApp extends StatelessWidget {
     `,
   };
 
-  public static getMainFileContent(fileName: string): string {
-    return this.fileTemplates.main.replace(/{fileName}/g, fileName);
-  }
+ 
 }
