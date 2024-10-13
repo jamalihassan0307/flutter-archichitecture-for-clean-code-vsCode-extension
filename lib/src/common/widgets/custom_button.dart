@@ -1,6 +1,4 @@
-export class custom_button {
-  public static fileTemplates: { [key: string]: string } = {
-    custom_button: ` import '../../../../generated/locales.g.dart';
+ import '../../../../generated/locales.g.dart';
 import '../../../../src/common/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,8 +17,7 @@ class CustomButton extends StatelessWidget {
     this.txtClr,
     this.isBorder = false,
     required this.onPressed,
-    // this.text = "Next",
-    this.text = "LocaleKeys.button_next",
+    this.text = LocaleKeys.button_next,
   });
 
   @override
@@ -68,6 +65,3 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-`,
-  };
-}

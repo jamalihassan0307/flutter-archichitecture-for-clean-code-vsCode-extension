@@ -4,7 +4,7 @@ import * as path from "path";
 import * as _ from "lodash";
 import { Featurecontroller } from "../Features/controllers/feature_controller";
 import { FeatureState } from "../Features/controllers/feature_state";
-import { FeatureRepository } from "../Features/repository/feature_erpository";
+import { FeatureRepository } from "../Features/repository/feature_repository";
 
 export class FeatureUtils {
   // Function to get the feature name from the user input

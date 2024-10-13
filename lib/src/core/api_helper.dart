@@ -1,21 +1,18 @@
-export class api_helper {
-  public static fileTemplates: { [key: string]: string } = {
-    api_helper: `
+
  import 'dart:convert';
 import 'dart:developer';
-import 'package:http/http.dart';
-import 'package:http/http.dart' as http;
-import 'package:get/get_connect/http/src/response/response.dart';
-
-import '../../../../src/core/failure.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:http/http.dart';
 import '../../../../src/res/strings.dart';
+import '../common/providers/common_providers.dart';
+import 'core.dart';
 
-// final StateProvider<ApiHelper> apiHelperProvider = StateProvider((ref) {
-//   final String? authToken = ref.watch(authTokenProvider);
-//   print("Auth Token: $authToken");
-//   return ApiHelper(authToken: authToken);
-// });
+final StateProvider<ApiHelper> apiHelperProvider = StateProvider((ref) {
+  final String? authToken = ref.watch(authTokenProvider);
+  print("Auth Token: $authToken");
+  return ApiHelper(authToken: authToken);
+});
 
 class ApiHelper {
   final String? _authToken;
@@ -25,7 +22,7 @@ class ApiHelper {
   final Duration _timeoutDuration = const Duration(seconds: 10);
 
   // Generic GET request
-  Future<Either<Failure, http.Response>> getRequest({
+  Future<Either<Failure, Response>> getRequest({
     required String endpoint,
     bool requireAuth = true,
   }) async {
@@ -54,7 +51,7 @@ class ApiHelper {
   }
 
   // Generic POST request
-  Future<Either<Failure, http.Response>> postRequest({
+  Future<Either<Failure, Response>> postRequest({
     required String endpoint,
     required dynamic data,
     bool requireAuth = true,
@@ -87,7 +84,7 @@ class ApiHelper {
   }
 
   // Generic PUT request
-  Future<Either<Failure, http.Response>> putRequest({
+  Future<Either<Failure, Response>> putRequest({
     required String endpoint,
     required dynamic data,
     bool requireAuth = true,
@@ -120,7 +117,7 @@ class ApiHelper {
   }
 
   // Generic DELETE request
-  Future<Either<Failure, http.Response>> deleteRequest({
+  Future<Either<Failure, Response>> deleteRequest({
     required String endpoint,
     required dynamic data,
     bool requireAuth = true,
@@ -151,8 +148,4 @@ class ApiHelper {
       );
     }
   }
-}
-
-`,
-  };
 }

@@ -32,7 +32,7 @@ import { FeatureUtils } from "f:/extention/flutter-archichitecture/src/dart_snip
 import { Main } from "f:/extention/flutter-archichitecture/src/dart_snippets/NextWayArchitecture/main";
 import { Featurecontroller } from "./Features/controllers/feature_controller";
 import { FeatureState } from "./Features/controllers/feature_state";
-import { FeatureRepository } from "./Features/repository/feature_erpository";
+import { FeatureRepository } from "./Features/repository/feature_repository";
 
 export const ImportsManager = {
   firebase_options,

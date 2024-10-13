@@ -1,6 +1,4 @@
-export class color_scheme {
-  public static fileTemplates: { [key: string]: string } = {
-    color_scheme: ` import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 ColorScheme get appColorScheme => const ColorScheme(
       brightness: Brightness.light,
@@ -20,6 +18,4 @@ ColorScheme get appColorScheme => const ColorScheme(
       onSurface: Colors.black,
     );
 
-`,
-  };
 }

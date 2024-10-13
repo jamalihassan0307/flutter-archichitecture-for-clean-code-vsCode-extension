@@ -1,9 +1,6 @@
-export class custom_textfield {
-  public static fileTemplates: { [key: string]: string } = {
-    custom_textfield: ` 
-    import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../src/common/constants/global_variables.dart';
+import '../constants/global_variables.t';
 
 class CustomTextField extends StatelessWidget {
   final String? hintText;
@@ -95,6 +92,4 @@ class CustomTextField extends StatelessWidget {
   }
 
 
-}`,
-  };
 }

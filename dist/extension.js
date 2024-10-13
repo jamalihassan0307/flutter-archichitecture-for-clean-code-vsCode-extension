@@ -34,9 +34,9 @@ exports.deactivate = deactivate;
 const vscode = __importStar(__webpack_require__(1));
 const fs = __importStar(__webpack_require__(2));
 const path = __importStar(__webpack_require__(3));
-const ImportsManager_1 = __webpack_require__(35);
-const yamal_utils_1 = __webpack_require__(33);
-const feature_utils_1 = __webpack_require__(34);
+const ImportsManager_1 = __webpack_require__(4);
+const yamal_utils_1 = __webpack_require__(39);
+const feature_utils_1 = __webpack_require__(40);
 function activate(context) {
     let disposable = vscode.commands.registerCommand("flutter-archichitecture.createNextWaysArchitecture", async () => {
         const fileTemplates = {
@@ -192,314 +192,43 @@ module.exports = require("fs");
 module.exports = require("path");
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Featurecontroller = void 0;
-class Featurecontroller {
-    static fileTemplates = {
-        controller: (featureName) => `
-    import 'package:careercenter_app/src/router/routes.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:loader_overlay/loader_overlay.dart';
-
-
-
-
-// ########################  RiverPod-Providers ############################  //
-
-//final userProvider = StateProvider<UserModel?>((ref) => null);
-
-final ${featureName.toLowerCase()}ControllerProvider = StateNotifierProvider<${featureName}Controller, ${featureName}State>(
-  (ref) => ${featureName}Controller(
-      ${featureName.toLowerCase()}Repository: ref.read(${featureName.toLowerCase()}RepositoryProvider), ref: ref),
-);
-        class ${featureName}Controller extends StateNotifier<${featureName}State>{
-          final ${featureName}Repository _${featureName.toLowerCase()}Repository;
-  final Ref _ref;
-  ${featureName}Controller({required ${featureName}Repository ${featureName.toLowerCase()}Repository, required Ref ref})
-      : _${featureName.toLowerCase()}Repository = ${featureName.toLowerCase()}Repository,
-        _ref = ref,
-        super(const ${featureName}State(
-            isLoading: false, isObserver: true, isAuthenticated: false));
-        }
-      `,
-    };
-}
-exports.Featurecontroller = Featurecontroller;
-
-
-/***/ }),
-/* 31 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FeatureState = void 0;
-class FeatureState {
-    static fileTemplates = {
-        state: (featureName) => `
-        class ${featureName}State {
-          // TODO: Add ${featureName} state management logic
-        }
-      `,
-    };
-}
-exports.FeatureState = FeatureState;
-
-
-/***/ }),
-/* 32 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FeatureRepository = void 0;
-class FeatureRepository {
-    static fileTemplates = {
-        repository: (featureName) => `
-        class ${featureName}Repository {
-          // TODO: Add ${featureName} repository logic
-        }
-      `,
-        // Add other template types if needed
-    };
-}
-exports.FeatureRepository = FeatureRepository;
-
-
-/***/ }),
-/* 33 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.YamalUtility = void 0;
-const vscode = __importStar(__webpack_require__(1));
-const fs = __importStar(__webpack_require__(2));
-const path = __importStar(__webpack_require__(3));
-class YamalUtility {
-    static requiredPackages = {
-        google_fonts: "^6.2.1",
-        provider: "^6.1.2",
-        device_preview: "^1.2.0",
-        flutter_svg: "^2.0.10+1",
-        google_maps_flutter: "^2.0.6",
-        flutter_riverpod: "^2.0.0",
-        image_picker: "^1.1.2",
-        animated_toggle_switch: "^0.8.2",
-        intl: "^0.19.0",
-        step_progress_indicator: "^1.0.2",
-        go_router: "^14.2.2",
-        file_picker: "^8.0.6",
-        dotted_border: "^2.1.0",
-        like_button: "^2.0.5",
-        url_launcher: "^6.3.0",
-        dotted_decoration: "^2.0.0",
-        get: "^4.6.6",
-        loader_overlay: "^4.0.1",
-        fpdart: "^1.1.0",
-        google_sign_in: "^6.2.1",
-        firebase_auth: "^5.1.4",
-        firebase_core: "^3.3.0",
-        flutter_animate: "^4.5.0",
-        sign_in_with_apple: "^6.1.1",
-        http: "^1.2.2",
-        shared_preferences: "^2.3.2",
-        country_code_picker: "^3.0.0",
-    };
-    static updatePubspecYaml(rootPath) {
-        const pubspecPath = path.join(rootPath, "pubspec.yaml");
-        if (fs.existsSync(pubspecPath)) {
-            let pubspecContent = fs.readFileSync(pubspecPath, "utf-8");
-            for (const [pkg, version] of Object.entries(YamalUtility.requiredPackages)) {
-                if (!pubspecContent.includes(pkg)) {
-                    pubspecContent += `\n  ${pkg}: ${version}`;
-                }
-            }
-            fs.writeFileSync(pubspecPath, pubspecContent);
-            vscode.window.showInformationMessage("pubspec.yaml updated with required packages.");
-        }
-        else {
-            vscode.window.showErrorMessage("pubspec.yaml not found.");
-        }
-    }
-}
-exports.YamalUtility = YamalUtility;
-
-
-/***/ }),
-/* 34 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FeatureUtils = void 0;
-const vscode = __importStar(__webpack_require__(1));
-const fs = __importStar(__webpack_require__(2));
-const path = __importStar(__webpack_require__(3));
-const feature_controller_1 = __webpack_require__(30);
-const feature_state_1 = __webpack_require__(31);
-const feature_erpository_1 = __webpack_require__(32);
-class FeatureUtils {
-    // Function to get the feature name from the user input
-    static async getFeatureName() {
-        const featureName = await vscode.window.showInputBox({
-            placeHolder: "Enter the name of the feature (e.g., Auth)",
-            prompt: "Create new feature folder",
-        });
-        return featureName;
-    }
-    // Function to create the folder structure for a given feature
-    static createFeatureStructure(rootPath, featureName) {
-        if (!featureName) {
-            vscode.window.showErrorMessage("Feature name cannot be empty.");
-            return;
-        }
-        const featurePath = path.join(rootPath, "lib", "src", "features", featureName.toLowerCase());
-        // Define folder structure inside the feature folder
-        const folders = ["controllers", "pages", "repository", "models"];
-        // Create the folders
-        folders.forEach((folder) => {
-            const folderPath = path.join(featurePath, folder);
-            fs.mkdirSync(folderPath, { recursive: true });
-        });
-        // Generate file paths for the files inside the feature
-        const controllerFilePath = path.join(featurePath, "controllers", `${featureName.toLowerCase()}_controller.dart`);
-        const stateFilePath = path.join(featurePath, "controllers", `${featureName.toLowerCase()}_state.dart`);
-        const repositoryFilePath = path.join(featurePath, "repository", `${featureName.toLowerCase()}_repository.dart`);
-        // Fetch the file content from FeatureFileTemplates
-        const controllerContent = feature_controller_1.Featurecontroller.fileTemplates.controller(featureName);
-        const stateContent = feature_state_1.FeatureState.fileTemplates.state(featureName);
-        const repositoryContent = feature_erpository_1.FeatureRepository.fileTemplates.repository(featureName);
-        // Write content to the respective files
-        fs.writeFileSync(controllerFilePath, controllerContent);
-        fs.writeFileSync(stateFilePath, stateContent);
-        fs.writeFileSync(repositoryFilePath, repositoryContent);
-        vscode.window.showInformationMessage(`Feature "${capitalize(featureName)}" created successfully!`);
-    }
-}
-exports.FeatureUtils = FeatureUtils;
-// Utility function to capitalize the first letter of a string
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
-
-
-/***/ }),
-/* 35 */
+/* 4 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ImportsManager = void 0;
-const firebase_options_1 = __webpack_require__(36);
-const app_constant_1 = __webpack_require__(37);
-const global_variables_1 = __webpack_require__(38);
-const image_paths_1 = __webpack_require__(39);
-const static_data_1 = __webpack_require__(40);
-const language_services_1 = __webpack_require__(41);
-const custom_snackbar_1 = __webpack_require__(42);
-const custom_snakbar_1 = __webpack_require__(43);
-const shared_pref_helper_1 = __webpack_require__(44);
-const validation_1 = __webpack_require__(45);
-const custom_button_1 = __webpack_require__(46);
-const custom_textfield_1 = __webpack_require__(47);
-const failure_1 = __webpack_require__(48);
-const type_def_1 = __webpack_require__(49);
-const strings_1 = __webpack_require__(50);
-const error_route_1 = __webpack_require__(51);
-const route_transition_1 = __webpack_require__(52);
-const routes_1 = __webpack_require__(53);
-const tab_bar_theme_1 = __webpack_require__(54);
-const text_theme_1 = __webpack_require__(55);
-const app_theme_1 = __webpack_require__(56);
-const color_scheme_1 = __webpack_require__(57);
-const api_helper_1 = __webpack_require__(58);
-const locales_1 = __webpack_require__(59);
-const api_endpoints_1 = __webpack_require__(60);
-const yamal_utils_1 = __webpack_require__(61);
-const feature_utils_1 = __webpack_require__(62);
-const main_1 = __webpack_require__(66);
-const feature_controller_1 = __webpack_require__(30);
-const feature_state_1 = __webpack_require__(31);
-const feature_erpository_1 = __webpack_require__(32);
+const firebase_options_1 = __webpack_require__(5);
+const app_constant_1 = __webpack_require__(6);
+const global_variables_1 = __webpack_require__(7);
+const image_paths_1 = __webpack_require__(8);
+const static_data_1 = __webpack_require__(9);
+const language_services_1 = __webpack_require__(10);
+const custom_snackbar_1 = __webpack_require__(11);
+const custom_snakbar_1 = __webpack_require__(12);
+const shared_pref_helper_1 = __webpack_require__(13);
+const validation_1 = __webpack_require__(14);
+const custom_button_1 = __webpack_require__(15);
+const custom_textfield_1 = __webpack_require__(16);
+const failure_1 = __webpack_require__(17);
+const type_def_1 = __webpack_require__(18);
+const strings_1 = __webpack_require__(19);
+const error_route_1 = __webpack_require__(20);
+const route_transition_1 = __webpack_require__(21);
+const routes_1 = __webpack_require__(22);
+const tab_bar_theme_1 = __webpack_require__(23);
+const text_theme_1 = __webpack_require__(24);
+const app_theme_1 = __webpack_require__(25);
+const color_scheme_1 = __webpack_require__(26);
+const api_helper_1 = __webpack_require__(27);
+const locales_1 = __webpack_require__(28);
+const api_endpoints_1 = __webpack_require__(29);
+const yamal_utils_1 = __webpack_require__(30);
+const feature_utils_1 = __webpack_require__(31);
+const main_1 = __webpack_require__(35);
+const feature_controller_1 = __webpack_require__(36);
+const feature_state_1 = __webpack_require__(37);
+const feature_repository_1 = __webpack_require__(38);
 exports.ImportsManager = {
     firebase_options: firebase_options_1.firebase_options,
     Main: main_1.Main,
@@ -529,14 +258,14 @@ exports.ImportsManager = {
     api_endpoints: api_endpoints_1.api_endpoints,
     Featurecontroller: feature_controller_1.Featurecontroller,
     FeatureState: feature_state_1.FeatureState,
-    FeatureRepository: feature_erpository_1.FeatureRepository,
+    FeatureRepository: feature_repository_1.FeatureRepository,
     YamalUtility: yamal_utils_1.YamalUtility,
     FeatureUtils: feature_utils_1.FeatureUtils,
 };
 
 
 /***/ }),
-/* 36 */
+/* 5 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -616,7 +345,7 @@ exports.firebase_options = firebase_options;
 
 
 /***/ }),
-/* 37 */
+/* 6 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -632,7 +361,7 @@ exports.app_constant = app_constant;
 
 
 /***/ }),
-/* 38 */
+/* 7 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -666,7 +395,7 @@ exports.global_variables = global_variables;
 
 
 /***/ }),
-/* 39 */
+/* 8 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -684,7 +413,7 @@ exports.image_paths = image_paths;
 
 
 /***/ }),
-/* 40 */
+/* 9 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -716,7 +445,7 @@ exports.static_data = static_data;
 
 
 /***/ }),
-/* 41 */
+/* 10 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -757,7 +486,7 @@ exports.language_services = language_services;
 
 
 /***/ }),
-/* 42 */
+/* 11 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -837,7 +566,7 @@ exports.custom_snackbar = custom_snackbar;
 
 
 /***/ }),
-/* 43 */
+/* 12 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -903,7 +632,7 @@ exports.custom_snakbar = custom_snakbar;
 
 
 /***/ }),
-/* 44 */
+/* 13 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -996,7 +725,7 @@ exports.shared_pref_helper = shared_pref_helper;
 
 
 /***/ }),
-/* 45 */
+/* 14 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1008,99 +737,181 @@ class validation {
 import 'package:get/get.dart';
 
 class Validation {
-  static String? fieldValidation(String? value, String field) {
-    if (value == null || value.isEmpty) {
-      return '$/{LocaleKeys.validation_please_fill.tr/} $field';
-    }
-    return null;
-  }
+  // static String? fieldValidation(String? value, String field) {
+  //   if (value == null || value.isEmpty) {
+  //     return '$/{LocaleKeys.validation_please_fill.tr/} $field';
+  //   }
+  //   return null;
+  // }
 
-  static String? emaiValidation(String? value) {
-    String pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[\w-]{2,4}$';
-    RegExp regex = RegExp(pattern);
-    if (!regex.hasMatch(value!.trim())) {
-      return LocaleKeys.validation_please_enter_a_valid_email.tr;
-    }
-    return null;
-  }
+  // static String? emaiValidation(String? value) {
+  //   String pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[\w-]{2,4}$';
+  //   RegExp regex = RegExp(pattern);
+  //   if (!regex.hasMatch(value!.trim())) {
+  //     return LocaleKeys.validation_please_enter_a_valid_email.tr;
+  //   }
+  //   return null;
+  // }
 
-  static String? usernameValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return LocaleKeys.validation_please_enter_some_text.tr;
-    }
-    if (value.length < 3) {
-      return LocaleKeys
-          .validation_username_must_be_at_least_3_characters_long.tr;
-    }
-    if (value.length > 20) {
-      return LocaleKeys.validation_username_must_not_exceed_20_characters.tr;
-    }
-    if (!RegExp(r'^[a-zA-Z0-9._]+$').hasMatch(value)) {
-      return LocaleKeys
-          .validation_username_can_only_contain_letters_numbers_periods_and_underscores
-          .tr;
-    }
-    return null;
-  }
+  // static String? usernameValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_enter_some_text.tr;
+  //   }
+  //   if (value.length < 3) {
+  //     return LocaleKeys
+  //         .validation_username_must_be_at_least_3_characters_long.tr;
+  //   }
+  //   if (value.length > 20) {
+  //     return LocaleKeys.validation_username_must_not_exceed_20_characters.tr;
+  //   }
+  //   if (!RegExp(r'^[a-zA-Z0-9._]+$').hasMatch(value)) {
+  //     return LocaleKeys
+  //         .validation_username_can_only_contain_letters_numbers_periods_and_underscores
+  //         .tr;
+  //   }
+  //   return null;
+  // }
 
-  static String? passwordValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return LocaleKeys.validation_please_enter_a_password.tr;
-    }
-    if (value.length < 6) {
-      return LocaleKeys.validation_password_is_too_weak.tr;
-    }
-    // if (!value.contains(RegExp(r'[A-Z]'))) {
-    //   return 'Password must contain at least one uppercase letter';
-    // }
-    // if (!value.contains(RegExp(r'[a-z]'))) {
-    //   return 'Password must contain at least one lowercase letter';
-    // }
-    // if (!value.contains(RegExp(r'[0-9]'))) {
-    //   return 'Password must contain at least one digit';
-    // }
-    // if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-    //   return 'Password must contain at least one special character';
-    // }
-    return null;
-  }
+  // static String? passwordValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_enter_a_password.tr;
+  //   }
+  //   if (value.length < 6) {
+  //     return LocaleKeys.validation_password_is_too_weak.tr;
+  //   }
+  //   // if (!value.contains(RegExp(r'[A-Z]'))) {
+  //   //   return 'Password must contain at least one uppercase letter';
+  //   // }
+  //   // if (!value.contains(RegExp(r'[a-z]'))) {
+  //   //   return 'Password must contain at least one lowercase letter';
+  //   // }
+  //   // if (!value.contains(RegExp(r'[0-9]'))) {
+  //   //   return 'Password must contain at least one digit';
+  //   // }
+  //   // if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+  //   //   return 'Password must contain at least one special character';
+  //   // }
+  //   return null;
+  // }
 
-  static String? confirmPasswordValidation(String? value, String password) {
-    String? passwordError = passwordValidation(password);
-    if (passwordError != null) {
-      return passwordError;
-    }
+  // static String? confirmPasswordValidation(String? value, String password) {
+  //   String? passwordError = passwordValidation(password);
+  //   if (passwordError != null) {
+  //     return passwordError;
+  //   }
 
-    if (value == null || value.isEmpty) {
-      return LocaleKeys.validation_please_confirm_your_password.tr;
-    }
-    if (value != password) {
-      return LocaleKeys.validation_passwords_dont_match.tr;
-    }
-    return null;
-  }
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_confirm_your_password.tr;
+  //   }
+  //   if (value != password) {
+  //     return LocaleKeys.validation_passwords_dont_match.tr;
+  //   }
+  //   return null;
+  // }
 
-  static String? phoneNumberValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return LocaleKeys.validation_please_enter_a_phone_number.tr;
-    }
-    // RegExp regex = RegExp(r'^\+\d{1,3}\d{10,14}$');
-    RegExp regex = RegExp(r'^\d{10,12}$');
-    if (!regex.hasMatch(value)) {
-      return LocaleKeys.validation_please_enter_a_valid_phone_number.tr;
-    }
-    return null;
-  }
+  // static String? phoneNumberValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_enter_a_phone_number.tr;
+  //   }
+  //   // RegExp regex = RegExp(r'^\+\d{1,3}\d{10,14}$');
+  //   RegExp regex = RegExp(r'^\d{10,12}$');
+  //   if (!regex.hasMatch(value)) {
+  //     return LocaleKeys.validation_please_enter_a_valid_phone_number.tr;
+  //   }
+  //   return null;
+  // } // static String? fieldValidation(String? value, String field) {
+  //   if (value == null || value.isEmpty) {
+  //     return '$/{LocaleKeys.validation_please_fill.tr/} $field';
+  //   }
+  //   return null;
+  // }
+
+  // static String? emaiValidation(String? value) {
+  //   String pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[\w-]{2,4}$';
+  //   RegExp regex = RegExp(pattern);
+  //   if (!regex.hasMatch(value!.trim())) {
+  //     return LocaleKeys.validation_please_enter_a_valid_email.tr;
+  //   }
+  //   return null;
+  // }
+
+  // static String? usernameValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_enter_some_text.tr;
+  //   }
+  //   if (value.length < 3) {
+  //     return LocaleKeys
+  //         .validation_username_must_be_at_least_3_characters_long.tr;
+  //   }
+  //   if (value.length > 20) {
+  //     return LocaleKeys.validation_username_must_not_exceed_20_characters.tr;
+  //   }
+  //   if (!RegExp(r'^[a-zA-Z0-9._]+$').hasMatch(value)) {
+  //     return LocaleKeys
+  //         .validation_username_can_only_contain_letters_numbers_periods_and_underscores
+  //         .tr;
+  //   }
+  //   return null;
+  // }
+
+  // static String? passwordValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_enter_a_password.tr;
+  //   }
+  //   if (value.length < 6) {
+  //     return LocaleKeys.validation_password_is_too_weak.tr;
+  //   }
+  //   // if (!value.contains(RegExp(r'[A-Z]'))) {
+  //   //   return 'Password must contain at least one uppercase letter';
+  //   // }
+  //   // if (!value.contains(RegExp(r'[a-z]'))) {
+  //   //   return 'Password must contain at least one lowercase letter';
+  //   // }
+  //   // if (!value.contains(RegExp(r'[0-9]'))) {
+  //   //   return 'Password must contain at least one digit';
+  //   // }
+  //   // if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+  //   //   return 'Password must contain at least one special character';
+  //   // }
+  //   return null;
+  // }
+
+  // static String? confirmPasswordValidation(String? value, String password) {
+  //   String? passwordError = passwordValidation(password);
+  //   if (passwordError != null) {
+  //     return passwordError;
+  //   }
+
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_confirm_your_password.tr;
+  //   }
+  //   if (value != password) {
+  //     return LocaleKeys.validation_passwords_dont_match.tr;
+  //   }
+  //   return null;
+  // }
+
+  // static String? phoneNumberValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return LocaleKeys.validation_please_enter_a_phone_number.tr;
+  //   }
+  //   // RegExp regex = RegExp(r'^\+\d{1,3}\d{10,14}$');
+  //   RegExp regex = RegExp(r'^\d{10,12}$');
+  //   if (!regex.hasMatch(value)) {
+  //     return LocaleKeys.validation_please_enter_a_valid_phone_number.tr;
+  //   }
+  //   return null;
+  // }
 
 
-}`
+}`,
     };
 }
 exports.validation = validation;
 
 
 /***/ }),
-/* 46 */
+/* 15 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1127,7 +938,8 @@ class CustomButton extends StatelessWidget {
     this.txtClr,
     this.isBorder = false,
     required this.onPressed,
-    this.text = LocaleKeys.button_next,
+    // this.text = "Next",
+    this.text = "LocaleKeys.button_next",
   });
 
   @override
@@ -1175,14 +987,14 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-`
+`,
     };
 }
 exports.custom_button = custom_button;
 
 
 /***/ }),
-/* 47 */
+/* 16 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1190,9 +1002,10 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.custom_textfield = void 0;
 class custom_textfield {
     static fileTemplates = {
-        custom_textfield: ` import 'package:flutter/material.dart';
+        custom_textfield: ` 
+    import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../constants/global_variables.t';
+import '../../../src/common/constants/global_variables.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? hintText;
@@ -1284,14 +1097,14 @@ class CustomTextField extends StatelessWidget {
   }
 
 
-}`
+}`,
     };
 }
 exports.custom_textfield = custom_textfield;
 
 
 /***/ }),
-/* 48 */
+/* 17 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1317,7 +1130,7 @@ exports.failure = failure;
 
 
 /***/ }),
-/* 49 */
+/* 18 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1327,20 +1140,19 @@ class type_def {
     static fileTemplates = {
         type_def: ` import '../../../../src/core/failure.dart';
 import 'package:fpdart/fpdart.dart';
-import 'core.ts';
 
 typedef FutureEither<T> = Future<Either<Failure, T>>;
 typedef FutureVoid = Future<void>;
 
 
-`
+`,
     };
 }
 exports.type_def = type_def;
 
 
 /***/ }),
-/* 50 */
+/* 19 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1386,7 +1198,7 @@ exports.strings = strings;
 
 
 /***/ }),
-/* 51 */
+/* 20 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1417,7 +1229,7 @@ exports.error_route = error_route;
 
 
 /***/ }),
-/* 52 */
+/* 21 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1470,7 +1282,7 @@ exports.route_transition = route_transition;
 
 
 /***/ }),
-/* 53 */
+/* 22 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1478,26 +1290,28 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.routes = void 0;
 class routes {
     static fileTemplates = {
-        routes: ` import '../../../../src/features/auth/pages/sign_in_page.dart';
-import '../../../../src/features/auth/pages/sign_up_page.dart';
+        routes: `
+import 'package:course_tracker/src/router/error_route.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
       
-      GoRoute(
-        name: AppRoute.signin,
-        path: '/signin',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-            context: context, state: state, child: const SignInPage()),
-      ),
-      GoRoute(
-        name: AppRoute.signup,
-        path: '/signup',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-            context: context, state: state, child: const SignUpPage()),
-      ),
+      // GoRoute(
+      //   name: AppRoute.signin,
+      //   path: '/signin',
+      //   pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+      //       context: context, state: state, child: const SignInPage()),
+      // ),
+      // GoRoute(
+      //   name: AppRoute.signup,
+      //   path: '/signup',
+      //   pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+      //       context: context, state: state, child: const SignUpPage()),
+      // ),
      
     ],
     errorPageBuilder: (context, state) {
@@ -1520,14 +1334,14 @@ class AppRoute {
   
 }
 
-`
+`,
     };
 }
 exports.routes = routes;
 
 
 /***/ }),
-/* 54 */
+/* 23 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1549,14 +1363,14 @@ TabBarTheme get tabBarTheme => TabBarTheme(
       indicatorColor: Colors.transparent,
     );
 
-}`
+`
     };
 }
 exports.tab_bar_theme = tab_bar_theme;
 
 
 /***/ }),
-/* 55 */
+/* 24 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1639,14 +1453,14 @@ TextTheme get appTextTheme => TextTheme(
       ),
     );
 
-}`
+`,
     };
 }
 exports.text_theme = text_theme;
 
 
 /***/ }),
-/* 56 */
+/* 25 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1654,10 +1468,12 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.app_theme = void 0;
 class app_theme {
     static fileTemplates = {
-        app_theme: ` import '../../../../src/theme/widget_theme/text_theme.dart';
+        app_theme: ` 
+import '../../../../src/theme/widget_theme/tab_bar_theme.dart';
+
+import '../../../../src/theme/widget_theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'color_scheme.dart';
-import 'widget_theme/tab_bar_theme.ts';
 
 class AppTheme {
   AppTheme._();
@@ -1678,16 +1494,16 @@ class AppTheme {
         splashColor: Colors.transparent,
         colorScheme: appColorScheme,
       );
-}
 
-`
+  }
+`,
     };
 }
 exports.app_theme = app_theme;
 
 
 /***/ }),
-/* 57 */
+/* 26 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1715,14 +1531,14 @@ ColorScheme get appColorScheme => const ColorScheme(
       onSurface: Colors.black,
     );
 
-}`
+`,
     };
 }
 exports.color_scheme = color_scheme;
 
 
 /***/ }),
-/* 58 */
+/* 27 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1733,18 +1549,19 @@ class api_helper {
         api_helper: `
  import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart';
-import '../../../../src/res/strings.dart';
-import '../common/providers/common_providers.dart';
-import 'core.dart';
+import 'package:http/http.dart' as http;
+import 'package:get/get_connect/http/src/response/response.dart';
 
-final StateProvider<ApiHelper> apiHelperProvider = StateProvider((ref) {
-  final String? authToken = ref.watch(authTokenProvider);
-  print("Auth Token: $authToken");
-  return ApiHelper(authToken: authToken);
-});
+import '../../../../src/core/failure.dart';
+import 'package:fpdart/fpdart.dart';
+import '../../../../src/res/strings.dart';
+
+// final StateProvider<ApiHelper> apiHelperProvider = StateProvider((ref) {
+//   final String? authToken = ref.watch(authTokenProvider);
+//   print("Auth Token: $authToken");
+//   return ApiHelper(authToken: authToken);
+// });
 
 class ApiHelper {
   final String? _authToken;
@@ -1754,7 +1571,7 @@ class ApiHelper {
   final Duration _timeoutDuration = const Duration(seconds: 10);
 
   // Generic GET request
-  Future<Either<Failure, Response>> getRequest({
+  Future<Either<Failure, http.Response>> getRequest({
     required String endpoint,
     bool requireAuth = true,
   }) async {
@@ -1783,7 +1600,7 @@ class ApiHelper {
   }
 
   // Generic POST request
-  Future<Either<Failure, Response>> postRequest({
+  Future<Either<Failure, http.Response>> postRequest({
     required String endpoint,
     required dynamic data,
     bool requireAuth = true,
@@ -1816,7 +1633,7 @@ class ApiHelper {
   }
 
   // Generic PUT request
-  Future<Either<Failure, Response>> putRequest({
+  Future<Either<Failure, http.Response>> putRequest({
     required String endpoint,
     required dynamic data,
     bool requireAuth = true,
@@ -1849,7 +1666,7 @@ class ApiHelper {
   }
 
   // Generic DELETE request
-  Future<Either<Failure, Response>> deleteRequest({
+  Future<Either<Failure, http.Response>> deleteRequest({
     required String endpoint,
     required dynamic data,
     bool requireAuth = true,
@@ -1881,14 +1698,15 @@ class ApiHelper {
     }
   }
 }
-`
+
+`,
     };
 }
 exports.api_helper = api_helper;
 
 
 /***/ }),
-/* 59 */
+/* 28 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1929,7 +1747,7 @@ exports.locales = locales;
 
 
 /***/ }),
-/* 60 */
+/* 29 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1960,7 +1778,7 @@ exports.api_endpoints = api_endpoints;
 
 
 /***/ }),
-/* 61 */
+/* 30 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2043,7 +1861,7 @@ exports.YamalUtility = YamalUtility;
 
 
 /***/ }),
-/* 62 */
+/* 31 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2075,9 +1893,9 @@ exports.FeatureUtils = void 0;
 const vscode = __importStar(__webpack_require__(1));
 const fs = __importStar(__webpack_require__(2));
 const path = __importStar(__webpack_require__(3));
-const feature_controller_1 = __webpack_require__(63);
-const feature_state_1 = __webpack_require__(64);
-const feature_erpository_1 = __webpack_require__(65);
+const feature_controller_1 = __webpack_require__(32);
+const feature_state_1 = __webpack_require__(33);
+const feature_repository_1 = __webpack_require__(34);
 class FeatureUtils {
     // Function to get the feature name from the user input
     static async getFeatureName() {
@@ -2108,7 +1926,7 @@ class FeatureUtils {
         // Fetch the file content from FeatureFileTemplates
         const controllerContent = feature_controller_1.Featurecontroller.fileTemplates.controller(featureName);
         const stateContent = feature_state_1.FeatureState.fileTemplates.state(featureName);
-        const repositoryContent = feature_erpository_1.FeatureRepository.fileTemplates.repository(featureName);
+        const repositoryContent = feature_repository_1.FeatureRepository.fileTemplates.repository(featureName);
         // Write content to the respective files
         fs.writeFileSync(controllerFilePath, controllerContent);
         fs.writeFileSync(stateFilePath, stateContent);
@@ -2124,7 +1942,7 @@ function capitalize(str) {
 
 
 /***/ }),
-/* 63 */
+/* 32 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -2133,23 +1951,30 @@ exports.Featurecontroller = void 0;
 class Featurecontroller {
     static fileTemplates = {
         controller: (featureName) => `
-    import 'package:careercenter_app/src/router/routes.dart';
-import 'package:flutter/material.dart';
+// import 'dart:developer';
+
+// import '../../../common/constants/global_variables.dart';
+// import '../../../common/constants/static_data.dart';
+// import '../../../common/utils/custom_snakbar.dart';
+// import '../../../common/utils/shared_pref_helper.dart';
+import '../../../features/${featureName.toLowerCase()}/controllers/${featureName.toLowerCase()}_state.dart';
+import '../../../features/${featureName.toLowerCase()}/repository/${featureName.toLowerCase()}_repository.dart';
+// import '../../../router/routes.dart';
+// import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:loader_overlay/loader_overlay.dart';
-
-
+// import 'package:go_router/go_router.dart';
+// import 'package:loader_overlay/loader_overlay.dart';
 
 
 // ########################  RiverPod-Providers ############################  //
 
 //final userProvider = StateProvider<UserModel?>((ref) => null);
 
-final ${featureName.toLowerCase()}ControllerProvider = StateNotifierProvider<${featureName}Controller, ${featureName}State>(
-  (ref) => ${featureName}Controller(
-      ${featureName.toLowerCase()}Repository: ref.read(${featureName.toLowerCase()}RepositoryProvider), ref: ref),
-);
+// final ${featureName.toLowerCase()}ControllerProvider = StateNotifierProvider<${featureName}Controller, ${featureName}State>(
+//   (ref) => ${featureName}Controller(
+//       ${featureName.toLowerCase()}Repository: ref.read(${featureName.toLowerCase()}RepositoryProvider), ref: ref),
+// );
+// ############################## -END- ##################################### //
         class ${featureName}Controller extends StateNotifier<${featureName}State>{
           final ${featureName}Repository _${featureName.toLowerCase()}Repository;
   final Ref _ref;
@@ -2158,6 +1983,35 @@ final ${featureName.toLowerCase()}ControllerProvider = StateNotifierProvider<${f
         _ref = ref,
         super(const ${featureName}State(
             isLoading: false, isObserver: true, isAuthenticated: false));
+              // ##########################   Objects  ################################## //
+
+  // ########################   All-Methods-Calls  ########################## //
+
+  //   Future<UserModel?> getUserData(BuildContext context) async {
+  //   try {
+  //     final user = await _${featureName.toLowerCase()}Repository.getData();
+  //     return user.fold((failure) {
+  //       CustomSnackbar.showSnackbar(
+  //         context: context,
+  //         message: failure.message,
+  //         type: SnackbarType.error,
+  //       );
+  //       return null;
+  //     }, (userModel) {
+  //       _ref.read(userProvider.notifier).update((state) => userModel);
+
+  //       return userModel;
+  //     });
+  //   } catch (error) {
+  //     CustomSnackbar.showSnackbar(
+  //       context: context,
+  //       message: error.toString(),
+  //       type: SnackbarType.error,
+  //     );
+  //     return null;
+  //   }
+  // }
+
         }
       `,
     };
@@ -2166,7 +2020,7 @@ exports.Featurecontroller = Featurecontroller;
 
 
 /***/ }),
-/* 64 */
+/* 33 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -2176,7 +2030,27 @@ class FeatureState {
     static fileTemplates = {
         state: (featureName) => `
         class ${featureName}State {
-          // TODO: Add ${featureName} state management logic
+            final bool isLoading;
+  final bool isObserver;
+  final bool isAuthenticated;
+
+  const ${featureName}State({
+    required this.isLoading,
+    required this.isObserver,
+    required this.isAuthenticated,
+  });
+
+  ${featureName}State copyWith({
+    bool? isLoading,
+    bool? isObserver,
+    bool? isAuthenticated,
+  }) {
+    return ${featureName}State(
+      isLoading: isLoading ?? this.isLoading,
+      isObserver: isObserver ?? this.isObserver,
+      isAuthenticated: isAuthenticated ?? this.isAuthenticated,
+    );
+  }
         }
       `,
     };
@@ -2185,7 +2059,7 @@ exports.FeatureState = FeatureState;
 
 
 /***/ }),
-/* 65 */
+/* 34 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -2194,9 +2068,116 @@ exports.FeatureRepository = void 0;
 class FeatureRepository {
     static fileTemplates = {
         repository: (featureName) => `
+
+// import 'dart:convert';
+// import 'dart:developer';
+// import 'dart:io';
+import '../../../core/api_helper.dart';
+// import '../../../core/failure.dart';
+// import '../../../core/type_def.dart';
+// import '../../../res/api_endpoints.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:fpdart/fpdart.dart';
+// import '../../../common/constants/static_data.dart';
+
+//     final ${featureName.toLowerCase()}RepositoryProvider = Provider(
+//   (ref) => ${featureName}Repository(
+//       apiHelper: ref.read(apiHelperProvider),
+//       ${featureName.toLowerCase()}: ref.read(${featureName.toLowerCase()}Provider),
+//       googleSignIn: ref.read(googleSignInProvider),
+//       ref: ref),
+// );
         class ${featureName}Repository {
-          // TODO: Add ${featureName} repository logic
-        }
+           ${featureName}Repository({
+   
+    required ApiHelper apiHelper,
+    required Ref ref,
+  }) ;
+         // Stream<User?> get authStateChange => _auth.authStateChanges();
+
+         // ########################   All-Methods-Calls  ########################## //
+
+         // *************************   Sign In Google  **************************** //
+        //  FutureEither signInWithGoogle(bool isFromLogin) async {
+        //    try {
+        //      UserCredential userCredential;
+        //      if (kIsWeb) {
+        //        log('kIsWeb run ...');
+        //        GoogleAuthProvider googleProvider = GoogleAuthProvider();
+        //        googleProvider
+        //            .addScope('https://www.googleapis.com/auth/contacts.readonly');
+        //        userCredential = await _auth.signInWithPopup(googleProvider);
+        //      } else {
+        //        log('else kIsWeb run ...');
+       
+        //        final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+       
+        //        final googleAuth = await googleUser?.authentication;
+       
+        //        final credential = GoogleAuthProvider.credential(
+        //          accessToken: googleAuth?.accessToken,
+        //          idToken: googleAuth?.idToken,
+        //        );
+       
+        //        if (isFromLogin) {
+        //          userCredential = await _auth.signInWithCredential(credential);
+        //        } else {
+        //          userCredential =
+        //              await _auth.currentUser!.linkWithCredential(credential);
+        //        }
+        //      }
+       
+        //      return right(true);
+        //    } on FirebaseException catch (e) {
+        //      throw e.message!;
+        //    } catch (e) {
+        //      return left(Failure(message: e.toString()));
+        //    }
+        //  }
+  //        // ******************   Sign Up With Email and Password  ********************* //
+
+  // FutureEither<UserModel> signUpWithEmailPassword({
+  //   required String name,
+  //   required String username,
+  //   required String email,
+  //   required String password,
+  //   required String phone,
+  // }) async {
+  //   try {
+  //     final result = await _apiHelper.postRequest(
+  //         endpoint: ApiEndpoints.signUp,
+  //         requireAuth: false,
+  //         data: {
+  //           'name': name,
+  //           
+  //         });
+
+  //     return result.fold(
+  //       (failure) => Left(failure),
+  //       (response) {
+  //         final responseBody = json.decode(response.body);
+
+  //         if (response.statusCode == 200 && responseBody.containsKey('user')) {
+  //           final userData = responseBody['user'];
+  //           final userModel = UserModel.fromJson(userData);
+  //           return Right(userModel); // Success response
+  //         } else {
+  //           String errorMessage = responseBody['error'] ?? 'Unexpected error';
+  //           return Left(Failure(message: errorMessage));
+  //         }
+  //       },
+  //     );
+  //   } catch (e) {
+  //     log('Sign-up error: $e');
+  //     return Left(
+  //         Failure(message: 'Network error occurred, please try again later.'));
+  //   }
+  // }
+  //   // ***************************   Log Out  *********************************** //
+  // void logOut() async {
+  //   // Handle logout logic, maybe clearing tokens or notifying the server
+  // }
+           }
       `,
         // Add other template types if needed
     };
@@ -2205,7 +2186,7 @@ exports.FeatureRepository = FeatureRepository;
 
 
 /***/ }),
-/* 66 */
+/* 35 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -2280,6 +2261,414 @@ class MyApp extends StatelessWidget {
     };
 }
 exports.Main = Main;
+
+
+/***/ }),
+/* 36 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Featurecontroller = void 0;
+class Featurecontroller {
+    static fileTemplates = {
+        controller: (featureName) => `
+// import 'dart:developer';
+
+// import '../../../common/constants/global_variables.dart';
+// import '../../../common/constants/static_data.dart';
+// import '../../../common/utils/custom_snakbar.dart';
+// import '../../../common/utils/shared_pref_helper.dart';
+import '../../../features/${featureName.toLowerCase()}/controllers/${featureName.toLowerCase()}_state.dart';
+import '../../../features/${featureName.toLowerCase()}/repository/${featureName.toLowerCase()}_repository.dart';
+// import '../../../router/routes.dart';
+// import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:loader_overlay/loader_overlay.dart';
+
+
+// ########################  RiverPod-Providers ############################  //
+
+//final userProvider = StateProvider<UserModel?>((ref) => null);
+
+// final ${featureName.toLowerCase()}ControllerProvider = StateNotifierProvider<${featureName}Controller, ${featureName}State>(
+//   (ref) => ${featureName}Controller(
+//       ${featureName.toLowerCase()}Repository: ref.read(${featureName.toLowerCase()}RepositoryProvider), ref: ref),
+// );
+// ############################## -END- ##################################### //
+        class ${featureName}Controller extends StateNotifier<${featureName}State>{
+          final ${featureName}Repository _${featureName.toLowerCase()}Repository;
+  final Ref _ref;
+  ${featureName}Controller({required ${featureName}Repository ${featureName.toLowerCase()}Repository, required Ref ref})
+      : _${featureName.toLowerCase()}Repository = ${featureName.toLowerCase()}Repository,
+        _ref = ref,
+        super(const ${featureName}State(
+            isLoading: false, isObserver: true, isAuthenticated: false));
+              // ##########################   Objects  ################################## //
+
+  // ########################   All-Methods-Calls  ########################## //
+
+  //   Future<UserModel?> getUserData(BuildContext context) async {
+  //   try {
+  //     final user = await _${featureName.toLowerCase()}Repository.getData();
+  //     return user.fold((failure) {
+  //       CustomSnackbar.showSnackbar(
+  //         context: context,
+  //         message: failure.message,
+  //         type: SnackbarType.error,
+  //       );
+  //       return null;
+  //     }, (userModel) {
+  //       _ref.read(userProvider.notifier).update((state) => userModel);
+
+  //       return userModel;
+  //     });
+  //   } catch (error) {
+  //     CustomSnackbar.showSnackbar(
+  //       context: context,
+  //       message: error.toString(),
+  //       type: SnackbarType.error,
+  //     );
+  //     return null;
+  //   }
+  // }
+
+        }
+      `,
+    };
+}
+exports.Featurecontroller = Featurecontroller;
+
+
+/***/ }),
+/* 37 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.FeatureState = void 0;
+class FeatureState {
+    static fileTemplates = {
+        state: (featureName) => `
+        class ${featureName}State {
+            final bool isLoading;
+  final bool isObserver;
+  final bool isAuthenticated;
+
+  const ${featureName}State({
+    required this.isLoading,
+    required this.isObserver,
+    required this.isAuthenticated,
+  });
+
+  ${featureName}State copyWith({
+    bool? isLoading,
+    bool? isObserver,
+    bool? isAuthenticated,
+  }) {
+    return ${featureName}State(
+      isLoading: isLoading ?? this.isLoading,
+      isObserver: isObserver ?? this.isObserver,
+      isAuthenticated: isAuthenticated ?? this.isAuthenticated,
+    );
+  }
+        }
+      `,
+    };
+}
+exports.FeatureState = FeatureState;
+
+
+/***/ }),
+/* 38 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.FeatureRepository = void 0;
+class FeatureRepository {
+    static fileTemplates = {
+        repository: (featureName) => `
+
+// import 'dart:convert';
+// import 'dart:developer';
+// import 'dart:io';
+import '../../../core/api_helper.dart';
+// import '../../../core/failure.dart';
+// import '../../../core/type_def.dart';
+// import '../../../res/api_endpoints.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:fpdart/fpdart.dart';
+// import '../../../common/constants/static_data.dart';
+
+//     final ${featureName.toLowerCase()}RepositoryProvider = Provider(
+//   (ref) => ${featureName}Repository(
+//       apiHelper: ref.read(apiHelperProvider),
+//       ${featureName.toLowerCase()}: ref.read(${featureName.toLowerCase()}Provider),
+//       googleSignIn: ref.read(googleSignInProvider),
+//       ref: ref),
+// );
+        class ${featureName}Repository {
+           ${featureName}Repository({
+   
+    required ApiHelper apiHelper,
+    required Ref ref,
+  }) ;
+         // Stream<User?> get authStateChange => _auth.authStateChanges();
+
+         // ########################   All-Methods-Calls  ########################## //
+
+         // *************************   Sign In Google  **************************** //
+        //  FutureEither signInWithGoogle(bool isFromLogin) async {
+        //    try {
+        //      UserCredential userCredential;
+        //      if (kIsWeb) {
+        //        log('kIsWeb run ...');
+        //        GoogleAuthProvider googleProvider = GoogleAuthProvider();
+        //        googleProvider
+        //            .addScope('https://www.googleapis.com/auth/contacts.readonly');
+        //        userCredential = await _auth.signInWithPopup(googleProvider);
+        //      } else {
+        //        log('else kIsWeb run ...');
+       
+        //        final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+       
+        //        final googleAuth = await googleUser?.authentication;
+       
+        //        final credential = GoogleAuthProvider.credential(
+        //          accessToken: googleAuth?.accessToken,
+        //          idToken: googleAuth?.idToken,
+        //        );
+       
+        //        if (isFromLogin) {
+        //          userCredential = await _auth.signInWithCredential(credential);
+        //        } else {
+        //          userCredential =
+        //              await _auth.currentUser!.linkWithCredential(credential);
+        //        }
+        //      }
+       
+        //      return right(true);
+        //    } on FirebaseException catch (e) {
+        //      throw e.message!;
+        //    } catch (e) {
+        //      return left(Failure(message: e.toString()));
+        //    }
+        //  }
+  //        // ******************   Sign Up With Email and Password  ********************* //
+
+  // FutureEither<UserModel> signUpWithEmailPassword({
+  //   required String name,
+  //   required String username,
+  //   required String email,
+  //   required String password,
+  //   required String phone,
+  // }) async {
+  //   try {
+  //     final result = await _apiHelper.postRequest(
+  //         endpoint: ApiEndpoints.signUp,
+  //         requireAuth: false,
+  //         data: {
+  //           'name': name,
+  //           
+  //         });
+
+  //     return result.fold(
+  //       (failure) => Left(failure),
+  //       (response) {
+  //         final responseBody = json.decode(response.body);
+
+  //         if (response.statusCode == 200 && responseBody.containsKey('user')) {
+  //           final userData = responseBody['user'];
+  //           final userModel = UserModel.fromJson(userData);
+  //           return Right(userModel); // Success response
+  //         } else {
+  //           String errorMessage = responseBody['error'] ?? 'Unexpected error';
+  //           return Left(Failure(message: errorMessage));
+  //         }
+  //       },
+  //     );
+  //   } catch (e) {
+  //     log('Sign-up error: $e');
+  //     return Left(
+  //         Failure(message: 'Network error occurred, please try again later.'));
+  //   }
+  // }
+  //   // ***************************   Log Out  *********************************** //
+  // void logOut() async {
+  //   // Handle logout logic, maybe clearing tokens or notifying the server
+  // }
+           }
+      `,
+        // Add other template types if needed
+    };
+}
+exports.FeatureRepository = FeatureRepository;
+
+
+/***/ }),
+/* 39 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.YamalUtility = void 0;
+const vscode = __importStar(__webpack_require__(1));
+const fs = __importStar(__webpack_require__(2));
+const path = __importStar(__webpack_require__(3));
+class YamalUtility {
+    static requiredPackages = {
+        google_fonts: "^6.2.1",
+        provider: "^6.1.2",
+        device_preview: "^1.2.0",
+        flutter_svg: "^2.0.10+1",
+        google_maps_flutter: "^2.0.6",
+        flutter_riverpod: "^2.0.0",
+        image_picker: "^1.1.2",
+        animated_toggle_switch: "^0.8.2",
+        intl: "^0.19.0",
+        step_progress_indicator: "^1.0.2",
+        go_router: "^14.2.2",
+        file_picker: "^8.0.6",
+        dotted_border: "^2.1.0",
+        like_button: "^2.0.5",
+        url_launcher: "^6.3.0",
+        dotted_decoration: "^2.0.0",
+        get: "^4.6.6",
+        loader_overlay: "^4.0.1",
+        fpdart: "^1.1.0",
+        google_sign_in: "^6.2.1",
+        firebase_auth: "^5.1.4",
+        firebase_core: "^3.3.0",
+        flutter_animate: "^4.5.0",
+        sign_in_with_apple: "^6.1.1",
+        http: "^1.2.2",
+        shared_preferences: "^2.3.2",
+        country_code_picker: "^3.0.0",
+    };
+    static updatePubspecYaml(rootPath) {
+        const pubspecPath = path.join(rootPath, "pubspec.yaml");
+        if (fs.existsSync(pubspecPath)) {
+            let pubspecContent = fs.readFileSync(pubspecPath, "utf-8");
+            for (const [pkg, version] of Object.entries(YamalUtility.requiredPackages)) {
+                if (!pubspecContent.includes(pkg)) {
+                    pubspecContent += `\n  ${pkg}: ${version}`;
+                }
+            }
+            fs.writeFileSync(pubspecPath, pubspecContent);
+            vscode.window.showInformationMessage("pubspec.yaml updated with required packages.");
+        }
+        else {
+            vscode.window.showErrorMessage("pubspec.yaml not found.");
+        }
+    }
+}
+exports.YamalUtility = YamalUtility;
+
+
+/***/ }),
+/* 40 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.FeatureUtils = void 0;
+const vscode = __importStar(__webpack_require__(1));
+const fs = __importStar(__webpack_require__(2));
+const path = __importStar(__webpack_require__(3));
+const feature_controller_1 = __webpack_require__(36);
+const feature_state_1 = __webpack_require__(37);
+const feature_repository_1 = __webpack_require__(38);
+class FeatureUtils {
+    // Function to get the feature name from the user input
+    static async getFeatureName() {
+        const featureName = await vscode.window.showInputBox({
+            placeHolder: "Enter the name of the feature (e.g., Auth)",
+            prompt: "Create new feature folder",
+        });
+        return featureName;
+    }
+    // Function to create the folder structure for a given feature
+    static createFeatureStructure(rootPath, featureName) {
+        if (!featureName) {
+            vscode.window.showErrorMessage("Feature name cannot be empty.");
+            return;
+        }
+        const featurePath = path.join(rootPath, "lib", "src", "features", featureName.toLowerCase());
+        // Define folder structure inside the feature folder
+        const folders = ["controllers", "pages", "repository", "models"];
+        // Create the folders
+        folders.forEach((folder) => {
+            const folderPath = path.join(featurePath, folder);
+            fs.mkdirSync(folderPath, { recursive: true });
+        });
+        // Generate file paths for the files inside the feature
+        const controllerFilePath = path.join(featurePath, "controllers", `${featureName.toLowerCase()}_controller.dart`);
+        const stateFilePath = path.join(featurePath, "controllers", `${featureName.toLowerCase()}_state.dart`);
+        const repositoryFilePath = path.join(featurePath, "repository", `${featureName.toLowerCase()}_repository.dart`);
+        // Fetch the file content from FeatureFileTemplates
+        const controllerContent = feature_controller_1.Featurecontroller.fileTemplates.controller(featureName);
+        const stateContent = feature_state_1.FeatureState.fileTemplates.state(featureName);
+        const repositoryContent = feature_repository_1.FeatureRepository.fileTemplates.repository(featureName);
+        // Write content to the respective files
+        fs.writeFileSync(controllerFilePath, controllerContent);
+        fs.writeFileSync(stateFilePath, stateContent);
+        fs.writeFileSync(repositoryFilePath, repositoryContent);
+        vscode.window.showInformationMessage(`Feature "${capitalize(featureName)}" created successfully!`);
+    }
+}
+exports.FeatureUtils = FeatureUtils;
+// Utility function to capitalize the first letter of a string
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
 
 
 /***/ })

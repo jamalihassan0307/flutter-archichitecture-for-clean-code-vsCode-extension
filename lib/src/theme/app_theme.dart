@@ -1,11 +1,7 @@
-export class app_theme {
-  public static fileTemplates: { [key: string]: string } = {
-    app_theme: ` 
-import '../../../../src/theme/widget_theme/tab_bar_theme.dart';
-
-import '../../../../src/theme/widget_theme/text_theme.dart';
+ import '../../../../src/theme/widget_theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'color_scheme.dart';
+import 'widget_theme/tab_bar_theme.ts';
 
 class AppTheme {
   AppTheme._();
@@ -26,8 +22,5 @@ class AppTheme {
         splashColor: Colors.transparent,
         colorScheme: appColorScheme,
       );
-
-  }
-`,
-  };
 }
+

@@ -1,6 +1,4 @@
-export class text_theme {
-  public static fileTemplates: { [key: string]: string } = {
-    text_theme: ` import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextTheme get appTextTheme => TextTheme(
@@ -75,6 +73,4 @@ TextTheme get appTextTheme => TextTheme(
       ),
     );
 
-`,
-  };
 }

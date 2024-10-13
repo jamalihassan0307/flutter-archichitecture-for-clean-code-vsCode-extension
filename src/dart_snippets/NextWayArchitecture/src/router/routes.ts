@@ -1,26 +1,27 @@
-
 export class routes {
-public static  fileTemplates: { [key: string]: string } = {
-routes :  ` import '../../../../src/features/auth/pages/sign_in_page.dart';
-import '../../../../src/features/auth/pages/sign_up_page.dart';
+  public static fileTemplates: { [key: string]: string } = {
+    routes: `
+import 'package:course_tracker/src/router/error_route.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MyAppRouter {
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
       
-      GoRoute(
-        name: AppRoute.signin,
-        path: '/signin',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-            context: context, state: state, child: const SignInPage()),
-      ),
-      GoRoute(
-        name: AppRoute.signup,
-        path: '/signup',
-        pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
-            context: context, state: state, child: const SignUpPage()),
-      ),
+      // GoRoute(
+      //   name: AppRoute.signin,
+      //   path: '/signin',
+      //   pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+      //       context: context, state: state, child: const SignInPage()),
+      // ),
+      // GoRoute(
+      //   name: AppRoute.signup,
+      //   path: '/signup',
+      //   pageBuilder: (context, state) => buildPageWithFadeTransition<void>(
+      //       context: context, state: state, child: const SignUpPage()),
+      // ),
      
     ],
     errorPageBuilder: (context, state) {
@@ -43,7 +44,6 @@ class AppRoute {
   
 }
 
-`
-};
- }
-
+`,
+  };
+}
