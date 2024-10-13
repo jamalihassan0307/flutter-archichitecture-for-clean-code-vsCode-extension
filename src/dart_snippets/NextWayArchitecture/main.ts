@@ -1,4 +1,4 @@
-export class AppFileTemplates {
+export class Main {
   public static fileTemplates: { [key: string]: string } = {
     main: `
 // Main file template with a placeholder for fileName
@@ -65,6 +65,4 @@ class MyApp extends StatelessWidget {
 }
     `,
   };
-
- 
 }
