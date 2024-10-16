@@ -2913,8 +2913,9 @@ class _InterNetExceptionWidgetState extends State<InterNetExceptionWidget> {
             padding: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                  'We’re unable to show results.\nPlease check your data\nconnection.',
+                  'We’re unable to show results.Please check your data connection.',
                   textAlign: TextAlign.center,
+                   maxLines: 3,
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
@@ -3004,7 +3005,7 @@ class network_image_widget {
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'loading_widget.ts';
+import 'loading_widget.dart';
 
 //custom network image widget, we will used this widget show images, also handled exceptions
 // this widget is generic, we can change it and this change will appear across the app
@@ -3093,7 +3094,7 @@ class round_button {
     static fileTemplates = {
         round_button: ` 
 import 'package:flutter/material.dart';
-import '../color/color.ts';
+import '../color/color.dart';
 
 
 
@@ -3178,31 +3179,35 @@ class route {
         routes: ` 
 import 'package:flutter/material.dart';
 import '../../configs/routes/routes_name.dart';
-import '../../view/home/home_view.dart';
-import '../../view/login/login_view.dart';
-import '../../view/splash/splash_view.dart';
 
 class Routes {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RoutesName.splash:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const Splash());
 
-  // static Route<dynamic>  generateRoute(RouteSettings settings){
-
-  //   switch(settings.name){
-  //     case RoutesName.splash:
-  //       return MaterialPageRoute(builder: (BuildContext context) => const SplashView());
-
-   
-  //     default:
-  //       return MaterialPageRoute(builder: (_){
-  //         return const Scaffold(
-  //           body: Center(
-  //             child: Text('No route defined'),
-  //           ),
-  //         );
-  //       });
-
-  //   }
-  // }
+      default:
+        return MaterialPageRoute(builder: (_) {
+          return const Scaffold(
+            body: Center(
+              child: Text('No route defined'),
+            ),
+          );
+        });
+    }
+  }
 }
+
+class Splash extends StatelessWidget {
+  const Splash({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 `,
     };
 }
@@ -3221,7 +3226,7 @@ class routes_name {
         routes_name: ` 
 class RoutesName {
 
- // static const String splash = 'splash_view' ;
+  static const String splash = 'splash' ;
 
 }
 `,
@@ -3514,7 +3519,7 @@ class ApiResponse<T> {
 
   @override
   String toString(){
-    return "Status : $status \n Message : $message \n Data: $data" ;
+    return "Status : $status  Message : $message  Data: $data" ;
   }
 
 
@@ -3589,17 +3594,10 @@ class Main {
         main: ` 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../repository/auth_api/auth_http_api_repository.dart';
-import '../repository/auth_api/auth_repository.dart';
-import '../repository/home_api/home_http_api_repository.dart';
-import '../repository/home_api/home_repository.dart';
-import '../view_model/home/home_view_model.dart';
-import '../view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'configs/routes/routes.dart';
 import 'configs/routes/routes_name.dart';
-
 
 // creating an instance of GetIt
 // GetIt is a package used for service locator or to manage dependency injection
@@ -3607,7 +3605,7 @@ GetIt getIt = GetIt.instance;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
- // getIt.registerLazySingleton<HomeRepository>(() => HomeHttpApiRepository());
+  // getIt.registerLazySingleton<HomeRepository>(() => HomeHttpApiRepository());
   runApp(const MyApp());
 }
 
@@ -3617,9 +3615,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
+      providers: const [
         // initializing all the view model crated with Provider to used them across the app
-     
+
         // ChangeNotifierProvider(
         //     create: (_) => HomeViewViewModel(homeRepository: getIt())),
       ],
@@ -3635,6 +3633,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 `,
     };

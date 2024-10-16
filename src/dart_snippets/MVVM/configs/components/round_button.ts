@@ -2,7 +2,7 @@ export class round_button {
   public static fileTemplates: { [key: string]: string } = {
     round_button: ` 
 import 'package:flutter/material.dart';
-import '../color/color.ts';
+import '../color/color.dart';
 
 
 

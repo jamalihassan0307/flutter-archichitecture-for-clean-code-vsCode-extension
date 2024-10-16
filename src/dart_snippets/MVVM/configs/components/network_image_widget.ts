@@ -4,7 +4,7 @@ export class network_image_widget {
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'loading_widget.ts';
+import 'loading_widget.dart';
 
 //custom network image widget, we will used this widget show images, also handled exceptions
 // this widget is generic, we can change it and this change will appear across the app

@@ -5,31 +5,35 @@ export class route {
     routes: ` 
 import 'package:flutter/material.dart';
 import '../../configs/routes/routes_name.dart';
-import '../../view/home/home_view.dart';
-import '../../view/login/login_view.dart';
-import '../../view/splash/splash_view.dart';
 
 class Routes {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RoutesName.splash:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const Splash());
 
-  // static Route<dynamic>  generateRoute(RouteSettings settings){
-
-  //   switch(settings.name){
-  //     case RoutesName.splash:
-  //       return MaterialPageRoute(builder: (BuildContext context) => const SplashView());
-
-   
-  //     default:
-  //       return MaterialPageRoute(builder: (_){
-  //         return const Scaffold(
-  //           body: Center(
-  //             child: Text('No route defined'),
-  //           ),
-  //         );
-  //       });
-
-  //   }
-  // }
+      default:
+        return MaterialPageRoute(builder: (_) {
+          return const Scaffold(
+            body: Center(
+              child: Text('No route defined'),
+            ),
+          );
+        });
+    }
+  }
 }
+
+class Splash extends StatelessWidget {
+  const Splash({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 `,
   };
 }

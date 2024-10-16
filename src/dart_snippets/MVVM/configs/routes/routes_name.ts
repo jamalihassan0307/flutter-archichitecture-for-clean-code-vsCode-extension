@@ -3,7 +3,7 @@ export class routes_name {
     routes_name: ` 
 class RoutesName {
 
- // static const String splash = 'splash_view' ;
+  static const String splash = 'splash' ;
 
 }
 `,

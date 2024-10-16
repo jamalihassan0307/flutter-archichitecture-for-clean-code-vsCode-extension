@@ -31,8 +31,9 @@ class _InterNetExceptionWidgetState extends State<InterNetExceptionWidget> {
             padding: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                  'We’re unable to show results.\nPlease check your data\nconnection.',
+                  'We’re unable to show results.Please check your data connection.',
                   textAlign: TextAlign.center,
+                   maxLines: 3,
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
