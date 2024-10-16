@@ -5,6 +5,8 @@ import * as _ from "lodash";
 import { ImportsManager } from "./dart_snippets/NextWayArchitecture/ImportsManager";
 import { YamalUtility } from "./dart_snippets/NextWayArchitecture/utils/yamal_utils";
 import { FeatureUtils } from "./dart_snippets/NextWayArchitecture/utils/feature_utils";
+import { ImportsManagerMvvm } from "./dart_snippets/MVVM/importsManager";
+import { MvvmYamalUtility } from "./dart_snippets/MVVM/mvvm_yamal_utils";
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -152,8 +154,129 @@ export function activate(context: vscode.ExtensionContext) {
       }
     }
   );
+
+  //##########################################################################
+  //##########################################################################
+  //####################          M V V M        #############################
+  //##########################################################################
+  //##########################################################################
+
+  let mvvm = vscode.commands.registerCommand(
+    "flutter-archichitecture.createMVVMArchitecture",
+    async () => {
+      const fileTemplates: { [key: string]: string } = {
+        ...ImportsManagerMvvm.Main.fileTemplates,
+        ...ImportsManagerMvvm.generated_plugin_registrant.fileTemplates,
+        ...ImportsManagerMvvm.app_url.fileTemplates,
+        ...ImportsManagerMvvm.exceptions.fileTemplates,
+        ...ImportsManagerMvvm.utils.fileTemplates,
+        ...ImportsManagerMvvm.color.fileTemplates,
+        ...ImportsManagerMvvm.internet_exception_widget.fileTemplates,
+        ...ImportsManagerMvvm.loading_widget.fileTemplates,
+        ...ImportsManagerMvvm.app_exceptions.fileTemplates,
+        ...ImportsManagerMvvm.network_image_widget.fileTemplates,
+        ...ImportsManagerMvvm.round_button.fileTemplates,
+        ...ImportsManagerMvvm.routes_name.fileTemplates,
+        ...ImportsManagerMvvm.route.fileTemplates,
+        ...ImportsManagerMvvm.base_api_services.fileTemplates,
+        ...ImportsManagerMvvm.network_api_services.fileTemplates,
+        ...ImportsManagerMvvm.api_response.fileTemplates,
+        ...ImportsManagerMvvm.status.fileTemplates,
+      };
+
+      const workspaceFolders = vscode.workspace.workspaceFolders;
+
+      if (!workspaceFolders) {
+        vscode.window.showErrorMessage("No workspace folder found.");
+        return;
+      }
+
+      const rootPath = workspaceFolders[0].uri.fsPath;
+
+      const architecture = {
+        lib: [
+          { files: ["main.dart"] },
+          { files: ["generated_plugin_registrant.dart"] },
+          {
+            folder: "configs",
+            files: ["app_url.dart", "exceptions.dart", "utils.dart"],
+          },
+          { folder: "configs/color", files: ["color.dart"] },
+          {
+            folder: "configs/componets",
+            files: [
+              "internet_exception_widget.dart",
+              "loading_widget.dart",
+              "network_image_widget.dart",
+              "round_button.dart",
+            ],
+          },
+          {
+            folder: "configs/routes",
+            files: ["routes_name.dart", "routes.dart"],
+          },
+          {
+            folder: "configs/validator",
+            files: [],
+          },
+          {
+            folder: "data",
+            files: ["app_exceptions.dart"],
+          },
+          {
+            folder: "data/network",
+            files: ["base_api_services.dart", "network_api_services.dart"],
+          },
+          {
+            folder: "data/response",
+            files: ["api_response.dart", "status.dart"],
+          },
+          {
+            folder: "data/models",
+            files: [],
+          },
+          {
+            folder: "data/repository",
+            files: [],
+          },
+          {
+            folder: "data/view",
+            files: [],
+          },
+          {
+            folder: "data/view_model",
+            files: [],
+          },
+        ],
+      };
+
+      // Generate architecture files and folders
+      for (const folder of architecture.lib) {
+        const folderPath = folder.folder
+          ? path.join(rootPath, "lib", folder.folder)
+          : path.join(rootPath, "lib");
+        fs.mkdirSync(folderPath, { recursive: true });
+
+        for (const file of folder.files) {
+          const fileName = file.split(".")[0];
+          const fileContent = fileTemplates[fileName];
+          const filePath = path.join(folderPath, file);
+          fs.writeFileSync(filePath, fileContent, { flag: "wx" });
+        }
+      }
+
+      // Call to update pubspec.yaml
+      MvvmYamalUtility.updateMvvmPubspecYaml(rootPath);
+
+      vscode.window.showInformationMessage(
+        "Flutter architecture with Dart files created successfully!"
+      );
+    }
+  );
+
   context.subscriptions.push(featurecmd);
   context.subscriptions.push(disposable);
+  context.subscriptions.push(mvvm);
 }
 
 export function deactivate() {

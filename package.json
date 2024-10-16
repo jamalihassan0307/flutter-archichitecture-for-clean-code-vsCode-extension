@@ -2,7 +2,7 @@
   "name": "flutter-archichitecture",
   "displayName": "flutter-archichitecture",
   "description": "flutter clean structure include mvvm mvc and NextWays archichitecture",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "7jsscmp4zaio626xj6rxx77zhgeosa4yry5vhbr3hu7gcgt4k73q",
   "engines": {
     "vscode": "^1.94.0"
@@ -11,9 +11,6 @@
     "Other"
   ],
   "icon": "images/logo.jpg",
-  "activationEvents": [
-    "onCommand:flutter-archichitecture.createNextWaysArchitecture"
-  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -24,6 +21,10 @@
       {
         "command": "flutter-architecture.createFeature",
         "title": "Create Feature"
+      },
+      {
+        "command": "flutter-archichitecture.createMVVMArchitecture",
+        "title": "Create Mvvm Archichitecture"
       }
     ]
   },

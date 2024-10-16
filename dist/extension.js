@@ -37,6 +37,8 @@ const path = __importStar(__webpack_require__(3));
 const ImportsManager_1 = __webpack_require__(4);
 const yamal_utils_1 = __webpack_require__(39);
 const feature_utils_1 = __webpack_require__(40);
+const importsManager_1 = __webpack_require__(41);
+const mvvm_yamal_utils_1 = __webpack_require__(59);
 function activate(context) {
     let disposable = vscode.commands.registerCommand("flutter-archichitecture.createNextWaysArchitecture", async () => {
         const fileTemplates = {
@@ -165,8 +167,113 @@ function activate(context) {
             vscode.window.showErrorMessage("Feature name is required.");
         }
     });
+    //##########################################################################
+    //##########################################################################
+    //####################          M V V M        #############################
+    //##########################################################################
+    //##########################################################################
+    let mvvm = vscode.commands.registerCommand("flutter-archichitecture.createMVVMArchitecture", async () => {
+        const fileTemplates = {
+            ...importsManager_1.ImportsManagerMvvm.Main.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.generated_plugin_registrant.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.app_url.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.exceptions.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.utils.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.color.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.internet_exception_widget.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.loading_widget.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.app_exceptions.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.network_image_widget.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.round_button.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.routes_name.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.route.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.base_api_services.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.network_api_services.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.api_response.fileTemplates,
+            ...importsManager_1.ImportsManagerMvvm.status.fileTemplates,
+        };
+        const workspaceFolders = vscode.workspace.workspaceFolders;
+        if (!workspaceFolders) {
+            vscode.window.showErrorMessage("No workspace folder found.");
+            return;
+        }
+        const rootPath = workspaceFolders[0].uri.fsPath;
+        const architecture = {
+            lib: [
+                { files: ["main.dart"] },
+                { files: ["generated_plugin_registrant.dart"] },
+                {
+                    folder: "configs",
+                    files: ["app_url.dart", "exceptions.dart", "utils.dart"],
+                },
+                { folder: "configs/color", files: ["color.dart"] },
+                {
+                    folder: "configs/componets",
+                    files: [
+                        "internet_exception_widget.dart",
+                        "loading_widget.dart",
+                        "network_image_widget.dart",
+                        "round_button.dart",
+                    ],
+                },
+                {
+                    folder: "configs/routes",
+                    files: ["routes_name.dart", "routes.dart"],
+                },
+                {
+                    folder: "configs/validator",
+                    files: [],
+                },
+                {
+                    folder: "data",
+                    files: ["app_exceptions.dart"],
+                },
+                {
+                    folder: "data/network",
+                    files: ["base_api_services.dart", "network_api_services.dart"],
+                },
+                {
+                    folder: "data/response",
+                    files: ["api_response.dart", "status.dart"],
+                },
+                {
+                    folder: "data/models",
+                    files: [],
+                },
+                {
+                    folder: "data/repository",
+                    files: [],
+                },
+                {
+                    folder: "data/view",
+                    files: [],
+                },
+                {
+                    folder: "data/view_model",
+                    files: [],
+                },
+            ],
+        };
+        // Generate architecture files and folders
+        for (const folder of architecture.lib) {
+            const folderPath = folder.folder
+                ? path.join(rootPath, "lib", folder.folder)
+                : path.join(rootPath, "lib");
+            fs.mkdirSync(folderPath, { recursive: true });
+            for (const file of folder.files) {
+                const fileName = file.split(".")[0];
+                const fileContent = fileTemplates[fileName];
+                const filePath = path.join(folderPath, file);
+                fs.writeFileSync(filePath, fileContent, { flag: "wx" });
+            }
+        }
+        // Call to update pubspec.yaml
+        mvvm_yamal_utils_1.MvvmYamalUtility.updateMvvmPubspecYaml(rootPath);
+        vscode.window.showInformationMessage("Flutter architecture with Dart files created successfully!");
+    });
     context.subscriptions.push(featurecmd);
     context.subscriptions.push(disposable);
+    context.subscriptions.push(mvvm);
 }
 function deactivate() {
     console.debug("Flutter Architecture Generator: Deactivated");
@@ -2669,6 +2776,933 @@ exports.FeatureUtils = FeatureUtils;
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
+
+
+/***/ }),
+/* 41 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ImportsManagerMvvm = void 0;
+const app_url_1 = __webpack_require__(42);
+const color_1 = __webpack_require__(43);
+const internet_exception_widget_1 = __webpack_require__(44);
+const loading_widget_1 = __webpack_require__(45);
+const network_image_widget_1 = __webpack_require__(46);
+const round_button_1 = __webpack_require__(47);
+const extensions_1 = __webpack_require__(48);
+const routes_1 = __webpack_require__(49);
+const routes_name_1 = __webpack_require__(50);
+const utils_1 = __webpack_require__(51);
+const app_exceptions_1 = __webpack_require__(52);
+const base_api_services_1 = __webpack_require__(53);
+const network_api_services_1 = __webpack_require__(54);
+const api_response_1 = __webpack_require__(55);
+const status_1 = __webpack_require__(56);
+const generated_plugin_registrant_1 = __webpack_require__(57);
+const main_1 = __webpack_require__(58);
+exports.ImportsManagerMvvm = {
+    Main: main_1.Main,
+    generated_plugin_registrant: generated_plugin_registrant_1.generated_plugin_registrant,
+    app_url: app_url_1.app_url,
+    exceptions: extensions_1.exceptions,
+    utils: utils_1.utils,
+    color: color_1.color,
+    internet_exception_widget: internet_exception_widget_1.internet_exception_widget,
+    loading_widget: loading_widget_1.loading_widget,
+    app_exceptions: app_exceptions_1.app_exceptions,
+    network_image_widget: network_image_widget_1.network_image_widget,
+    round_button: round_button_1.round_button,
+    routes_name: routes_name_1.routes_name,
+    route: routes_1.route,
+    base_api_services: base_api_services_1.base_api_services,
+    network_api_services: network_api_services_1.network_api_services,
+    api_response: api_response_1.api_response,
+    status: status_1.status,
+};
+
+
+/***/ }),
+/* 42 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.app_url = void 0;
+class app_url {
+    static fileTemplates = {
+        app_url: ` 
+class AppUrl {
+
+
+  // static var baseUrl = 'https://reqres.in' ;
+  // static var moviesBaseUrl = 'https://dea91516-1da3-444b-ad94-c6d0c4dfab81.mock.pstmn.io/' ;
+
+  // static var loginEndPint =  '$baseUrl/api/login' ;
+ 
+}
+`,
+    };
+}
+exports.app_url = app_url;
+
+
+/***/ }),
+/* 43 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.color = void 0;
+class color {
+    static fileTemplates = {
+        color: `
+     import 'package:flutter/material.dart';
+
+class AppColors {
+
+  static const Color blackColor = Color(0x0ff00000);
+  static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color buttonColor = Colors.green;
+
+}
+`,
+    };
+}
+exports.color = color;
+
+
+/***/ }),
+/* 44 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.internet_exception_widget = void 0;
+class internet_exception_widget {
+    static fileTemplates = {
+        internet_exception_widget: ` 
+import 'package:flutter/material.dart';
+
+
+class InterNetExceptionWidget extends StatefulWidget {
+  final VoidCallback onPress;
+  const InterNetExceptionWidget({Key? key, required this.onPress})
+      : super(key: key);
+
+  @override
+  State<InterNetExceptionWidget> createState() =>
+      _InterNetExceptionWidgetState();
+}
+
+class _InterNetExceptionWidgetState extends State<InterNetExceptionWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height * .15),
+          const Icon(
+            Icons.cloud_off,
+            color: Colors.red,
+            size: 50,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Center(
+              child: Text(
+                  'We’re unable to show results.\nPlease check your data\nconnection.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(fontSize: 20)),
+            ),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * .15),
+          ElevatedButton(
+            onPressed: widget.onPress,
+            child: Center(
+              child: Text(
+                'RETRY',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+`,
+    };
+}
+exports.internet_exception_widget = internet_exception_widget;
+
+
+/***/ }),
+/* 45 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.loading_widget = void 0;
+class loading_widget {
+    static fileTemplates = {
+        loading_widget: ` 
+    import 'dart:io' show Platform;
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+//custom loading widget, we will used this widget show user some action depending on it's need
+// this widget is generic, we can change it and this change will appear across the app
+class LoadingWidget extends StatelessWidget {
+  final double size;
+  const LoadingWidget({Key? key, this.size = 36.0}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: Platform.isIOS
+            ? const CupertinoActivityIndicator(
+          color: Colors.blue,
+        )
+            : const CircularProgressIndicator(
+          strokeWidth: 2.0,
+          color: Colors.blue,
+        ),
+      ),
+    );
+  }
+}
+
+`,
+    };
+}
+exports.loading_widget = loading_widget;
+
+
+/***/ }),
+/* 46 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.network_image_widget = void 0;
+class network_image_widget {
+    static fileTemplates = {
+        network_image_widget: ` 
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'loading_widget.ts';
+
+//custom network image widget, we will used this widget show images, also handled exceptions
+// this widget is generic, we can change it and this change will appear across the app
+class NetworkImageWidget extends StatelessWidget {
+  final String imageUrl;
+  final double width, height, borderRadius , iconSize;
+  final BoxFit boxFit ;
+  const NetworkImageWidget(
+      {Key? key,
+        required this.imageUrl,
+        this.width = 40,
+        this.height = 40,
+        this.borderRadius = 18 ,
+      this.iconSize = 20 ,
+        this.boxFit = BoxFit.cover
+      })
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: imageUrl == '' ?
+      Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade900,
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          child:  Icon(Icons.person_outline , size: iconSize,)) :
+      CachedNetworkImage(
+        imageUrl: imageUrl,
+        width: width,
+        height: height,
+        imageBuilder: (context, imageProvider) => Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(borderRadius),
+            image: DecorationImage(
+              image: imageProvider,
+              fit: boxFit,
+            ),
+          ),
+        ),
+        placeholder: (context, url) => Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade900,
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          child: const Padding(
+            padding: EdgeInsets.all(12.0),
+            child: LoadingWidget(),
+          ),
+        ),
+        errorWidget: (context, url, error) => Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade900,
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child:  Icon(Icons.error_outline , size: iconSize,)),
+      ),
+    );
+  }
+}
+
+`,
+    };
+}
+exports.network_image_widget = network_image_widget;
+
+
+/***/ }),
+/* 47 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.round_button = void 0;
+class round_button {
+    static fileTemplates = {
+        round_button: ` 
+import 'package:flutter/material.dart';
+import '../color/color.ts';
+
+
+
+//custom round button component, we will used this widget show to show button
+// this widget is generic, we can change it and this change will appear across the app
+class RoundButton extends StatelessWidget {
+
+  final String title ;
+  final bool loading ;
+  final VoidCallback onPress ;
+  const RoundButton({Key? key ,
+    required this.title,
+    this.loading = false ,
+     required this.onPress ,
+
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPress,
+      child: Container(
+        height: 40,
+        width: 200,
+        decoration: BoxDecoration(
+          color: AppColors.buttonColor,
+          borderRadius: BorderRadius.circular(10)
+        ),
+        child: Center(
+            child:loading ? const CircularProgressIndicator(color: Colors.white,) :
+            Text(title ,
+              style: const TextStyle(color: AppColors.whiteColor),
+            )),
+      ),
+    );
+  }
+}
+
+`,
+    };
+}
+exports.round_button = round_button;
+
+
+/***/ }),
+/* 48 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.exceptions = void 0;
+class exceptions {
+    static fileTemplates = {
+        exceptions: ` 
+    import 'package:flutter/material.dart';
+
+extension MediaQueryValues on BuildContext {
+  double get mediaQueryHeight => MediaQuery.sizeOf(this).height;
+  double get mediaQueryWidth => MediaQuery.sizeOf(this).width ;
+}
+
+
+extension EmptySpace on num {
+  SizedBox get height => SizedBox(height:toDouble());
+  SizedBox get width => SizedBox(width:toDouble());
+}
+`,
+    };
+}
+exports.exceptions = exceptions;
+
+
+/***/ }),
+/* 49 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.route = void 0;
+class route {
+    static fileTemplates = {
+        routes: ` 
+import 'package:flutter/material.dart';
+import '../../configs/routes/routes_name.dart';
+import '../../view/home/home_view.dart';
+import '../../view/login/login_view.dart';
+import '../../view/splash/splash_view.dart';
+
+class Routes {
+
+  // static Route<dynamic>  generateRoute(RouteSettings settings){
+
+  //   switch(settings.name){
+  //     case RoutesName.splash:
+  //       return MaterialPageRoute(builder: (BuildContext context) => const SplashView());
+
+   
+  //     default:
+  //       return MaterialPageRoute(builder: (_){
+  //         return const Scaffold(
+  //           body: Center(
+  //             child: Text('No route defined'),
+  //           ),
+  //         );
+  //       });
+
+  //   }
+  // }
+}
+`,
+    };
+}
+exports.route = route;
+
+
+/***/ }),
+/* 50 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.routes_name = void 0;
+class routes_name {
+    static fileTemplates = {
+        routes_name: ` 
+class RoutesName {
+
+ // static const String splash = 'splash_view' ;
+
+}
+`,
+    };
+}
+exports.routes_name = routes_name;
+
+
+/***/ }),
+/* 51 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.utils = void 0;
+class utils {
+    static fileTemplates = {
+        utils: ` 
+
+import 'package:another_flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar_route.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+class Utils {
+
+
+  // we will use this function to shift focus from one text field to another text field
+  // we are using to avoid duplications of code
+  static void fieldFocusChange(BuildContext context , FocusNode current , FocusNode nextFocus){
+    current.unfocus();
+    FocusScope.of(context).requestFocus(nextFocus);
+  }
+
+  // generic toast message imported from toast package
+  // we will utilise this for showing errors or success messages
+  static toastMessage(String message){
+    Fluttertoast.showToast(
+        msg: message,
+    backgroundColor: Colors.black,
+      textColor: Colors.white,
+    );
+  }
+
+  //imported this from flush bar package
+  // we will utilise this for showing errors or success messages
+  static void flushBarErrorMessage(String message, BuildContext context){
+    showFlushbar(context: context,
+        flushbar: Flushbar(
+          forwardAnimationCurve:Curves.decelerate,
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.all(15),
+          message: message,
+          duration: const Duration(seconds: 3),
+          borderRadius: BorderRadius.circular(8),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colors.red,
+          reverseAnimationCurve: Curves.easeInOut,
+          positionOffset: 20,
+          icon: const Icon(Icons.error , size: 28 , color: Colors.white,),
+        )..show(context),
+
+    );
+
+  }
+
+
+  // we will utilise this for showing errors or success messages
+  static snackBar(String message, BuildContext context){
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(message ))
+    );
+  }
+
+}
+`,
+    };
+}
+exports.utils = utils;
+
+
+/***/ }),
+/* 52 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.app_exceptions = void 0;
+class app_exceptions {
+    static fileTemplates = {
+        app_exceptions: `
+ class AppException implements Exception {
+
+   // ignore: prefer_typing_uninitialized_variables
+   final _message;
+   // ignore: prefer_typing_uninitialized_variables
+   final _prefix;
+
+   AppException([this._message , this._prefix]);
+
+  @override
+  String toString(){
+    return '$_message$_prefix' ;
+  }
+
+}
+
+
+class FetchDataException extends AppException {
+
+  FetchDataException([String? message]) : super(message,'Error During Communication');
+}
+
+
+class BadRequestException extends AppException {
+
+  BadRequestException([String? message]) : super(message, 'Invalid request');
+}
+
+
+class UnauthorisedException extends AppException {
+
+  UnauthorisedException([String? message]) : super(message,'Unauthorised request');
+}
+
+
+class InvalidInputException extends AppException {
+
+  InvalidInputException([String? message]) : super(message, 'Invalid Input');
+}
+
+
+class NoInternetException extends AppException {
+
+  NoInternetException([String? message]) : super(message,'No Internet Connection');
+}
+
+`,
+    };
+}
+exports.app_exceptions = app_exceptions;
+
+
+/***/ }),
+/* 53 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.base_api_services = void 0;
+class base_api_services {
+    static fileTemplates = {
+        base_api_services: ` 
+abstract class BaseApiServices {
+
+  Future<dynamic> getGetApiResponse(String url);
+
+  Future<dynamic> getPostApiResponse(String url , dynamic data);
+
+}
+`,
+    };
+}
+exports.base_api_services = base_api_services;
+
+
+/***/ }),
+/* 54 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.network_api_services = void 0;
+class network_api_services {
+    static fileTemplates = {
+        network_api_services: ` 
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart';
+import '../../data/app_exceptions.dart';
+import '../../data/network/base_api_services.dart';
+import 'package:http/http.dart' as http;
+
+class NetworkApiService implements BaseApiServices {
+  @override
+  Future getGetApiResponse(String url) async {
+    if (kDebugMode) {
+      print(url);
+    }
+    dynamic responseJson;
+    try {
+      final response =
+          await http.get(Uri.parse(url)).timeout(const Duration(seconds: 20));
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw NoInternetException('');
+    } on TimeoutException {
+      throw FetchDataException('Network Request time out');
+    }
+
+    if (kDebugMode) {
+      print(responseJson);
+    }
+    return responseJson;
+  }
+
+  @override
+  Future getPostApiResponse(String url, dynamic data) async {
+    if (kDebugMode) {
+      print(url);
+      print(data);
+    }
+
+    dynamic responseJson;
+    try {
+      Response response = await post(Uri.parse(url), body: data)
+          .timeout(const Duration(seconds: 10));
+
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw NoInternetException('No Internet Connection');
+    } on TimeoutException {
+      throw FetchDataException('Network Request time out');
+    }
+
+    if (kDebugMode) {
+      print(responseJson);
+    }
+    return responseJson;
+  }
+
+  dynamic returnResponse(http.Response response) {
+    if (kDebugMode) {
+      print(response.statusCode);
+    }
+
+    switch (response.statusCode) {
+      case 200:
+        dynamic responseJson = jsonDecode(response.body);
+        return responseJson;
+      case 400:
+        throw BadRequestException(response.body.toString());
+      case 500:
+      case 404:
+        throw UnauthorisedException(response.body.toString());
+      default:
+        throw FetchDataException(
+            'Error occured while communicating with server');
+    }
+  }
+}
+
+`,
+    };
+}
+exports.network_api_services = network_api_services;
+
+
+/***/ }),
+/* 55 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.api_response = void 0;
+class api_response {
+    static fileTemplates = {
+        api_response: ` 
+import '../../data/response/status.dart';
+class ApiResponse<T> {
+
+  Status? status ;
+  T? data ;
+  String? message ;
+
+  ApiResponse(this.status , this.data, this.message);
+
+  ApiResponse.notStarted() : status = Status.notStarted ;
+
+  ApiResponse.loading() : status = Status.loading ;
+
+  ApiResponse.completed(this.data) : status = Status.completed ;
+
+  ApiResponse.error(this.message) : status = Status.error ;
+
+
+  @override
+  String toString(){
+    return "Status : $status \n Message : $message \n Data: $data" ;
+  }
+
+
+}
+`,
+    };
+}
+exports.api_response = api_response;
+
+
+/***/ }),
+/* 56 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.status = void 0;
+class status {
+    static fileTemplates = {
+        status: ` 
+enum Status { notStarted,loading, completed, error}
+`,
+    };
+}
+exports.status = status;
+
+
+/***/ }),
+/* 57 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.generated_plugin_registrant = void 0;
+class generated_plugin_registrant {
+    static fileTemplates = {
+        generated_plugin_registrant: ` //
+// Generated file. Do not edit.
+//
+
+// ignore_for_file: directives_ordering
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: depend_on_referenced_packages
+
+import 'package:fluttertoast/fluttertoast_web.dart';
+import 'package:shared_preferences_web/shared_preferences_web.dart';
+
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+
+// ignore: public_member_api_docs
+void registerPlugins(Registrar registrar) {
+  FluttertoastWebPlugin.registerWith(registrar);
+  SharedPreferencesPlugin.registerWith(registrar);
+  registrar.registerMessageHandler();
+}
+
+`,
+    };
+}
+exports.generated_plugin_registrant = generated_plugin_registrant;
+
+
+/***/ }),
+/* 58 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Main = void 0;
+class Main {
+    static fileTemplates = {
+        main: ` 
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import '../repository/auth_api/auth_http_api_repository.dart';
+import '../repository/auth_api/auth_repository.dart';
+import '../repository/home_api/home_http_api_repository.dart';
+import '../repository/home_api/home_repository.dart';
+import '../view_model/home/home_view_model.dart';
+import '../view_model/login/login_view_model.dart';
+import 'package:provider/provider.dart';
+
+import 'configs/routes/routes.dart';
+import 'configs/routes/routes_name.dart';
+
+
+// creating an instance of GetIt
+// GetIt is a package used for service locator or to manage dependency injection
+GetIt getIt = GetIt.instance;
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+ // getIt.registerLazySingleton<HomeRepository>(() => HomeHttpApiRepository());
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        // initializing all the view model crated with Provider to used them across the app
+     
+        // ChangeNotifierProvider(
+        //     create: (_) => HomeViewViewModel(homeRepository: getIt())),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // this is the initial route indicating from where our app will start
+        initialRoute: RoutesName.splash,
+        onGenerateRoute: Routes.generateRoute,
+      ),
+    );
+  }
+}
+
+`,
+    };
+}
+exports.Main = Main;
+
+
+/***/ }),
+/* 59 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.MvvmYamalUtility = void 0;
+const vscode = __importStar(__webpack_require__(1));
+const fs = __importStar(__webpack_require__(2));
+const path = __importStar(__webpack_require__(3));
+class MvvmYamalUtility {
+    static requiredPackages = {
+        fluttertoast: "^8.2.4",
+        http: "^1.2.0",
+        another_flushbar: "^1.12.30",
+        cached_network_image: "^3.3.1",
+        get_it: "^7.6.7",
+        provider: "^6.1.1",
+        shared_preferences: "^2.2.2",
+    };
+    static updateMvvmPubspecYaml(rootPath) {
+        const pubspecPath = path.join(rootPath, "pubspec.yaml");
+        if (fs.existsSync(pubspecPath)) {
+            let pubspecContent = fs.readFileSync(pubspecPath, "utf-8");
+            for (const [pkg, version] of Object.entries(MvvmYamalUtility.requiredPackages)) {
+                if (!pubspecContent.includes(pkg)) {
+                    pubspecContent += `\n  ${pkg}: ${version}`;
+                }
+            }
+            fs.writeFileSync(pubspecPath, pubspecContent);
+            vscode.window.showInformationMessage("pubspec.yaml updated with required packages.");
+        }
+        else {
+            vscode.window.showErrorMessage("pubspec.yaml not found.");
+        }
+    }
+}
+exports.MvvmYamalUtility = MvvmYamalUtility;
 
 
 /***/ })
