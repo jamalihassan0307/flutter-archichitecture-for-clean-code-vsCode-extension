@@ -1,7 +1,8 @@
 export class routes {
   public static fileTemplates: { [key: string]: string } = {
     routes: `
-import 'package:course_tracker/src/router/error_route.dart';
+
+import '../router/error_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -2,7 +2,7 @@
   "name": "flutter-archichitecture",
   "displayName": "flutter-archichitecture",
   "description": "flutter clean structure include mvvm, mvc and NextWays archichitecture",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "7jsscmp4zaio626xj6rxx77zhgeosa4yry5vhbr3hu7gcgt4k73q",
   "engines": {
     "vscode": "^1.94.0"
@@ -13,6 +13,12 @@
   "icon": "images/logo.jpg",
   "main": "./dist/extension.js",
   "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./src/dart_snippets/snippets.json"
+      }
+    ],
     "commands": [
       {
         "command": "flutter-archichitecture.createNextWaysArchitecture",
@@ -41,24 +47,25 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/lodash": "^4.17.10",
-    "@types/mocha": "^10.0.8",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.94.0",
-    "@typescript-eslint/eslint-plugin": "^8.7.0",
-    "@typescript-eslint/parser": "^8.7.0",
+    "@types/lodash": "^4.17.13",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/parser": "^8.16.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.11.1",
+    "eslint": "^9.16.0",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.6.2",
-    "webpack": "^5.95.0",
+    "typescript": "^5.7.2",
+    "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "glob": "^11.0.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
-    "yaml": "^2.5.1"
+    "yaml": "^2.6.1"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 export class shared_pref_helper {
-public static  fileTemplates: { [key: string]: string } = {
-  shared_pref_helper :  ` import '../../../../src/common/constants/global_variables.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+  public static fileTemplates: { [key: string]: string } = {
+    shared_pref_helper: ` import '../../../../src/common/constants/global_variables.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
  import '../../../src/common/constants/static_data.dart';
 
@@ -78,7 +78,6 @@ class SharedPrefHelper {
   }
 
 
-}`
-};
- }
-
+}`,
+  };
+}

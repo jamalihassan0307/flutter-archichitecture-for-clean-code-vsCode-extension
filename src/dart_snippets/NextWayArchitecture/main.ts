@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:device_preview/device_preview.dart';
 
-import '../../../../firebase_options.dart';
+// import '../../../../firebase_options.dart';
 import '../../../../src/common/constants/global_variables.dart';
 import '../../../../src/router/routes.dart';
 import '../../../../src/theme/app_theme.dart';
@@ -19,9 +19,9 @@ import '../../../../src/common/utils/shared_pref_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   await SharedPrefHelper.getInitialValue();
   runApp(
     riverpod.ProviderScope(
