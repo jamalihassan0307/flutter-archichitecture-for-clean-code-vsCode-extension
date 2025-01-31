@@ -1,6 +1,6 @@
 export class custom_button {
   public static fileTemplates: { [key: string]: string } = {
-    custom_button: ` import '../../../../generated/locales.g.dart';
+    custom_button: ` 
 import '../../../../src/common/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

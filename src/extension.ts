@@ -15,23 +15,16 @@ export function activate(context: vscode.ExtensionContext) {
       const fileTemplates: { [key: string]: string } = {
         ...ImportsManager.Main.fileTemplates,
         ...ImportsManager.firebase_options.fileTemplates,
-        ...ImportsManager.locales.fileTemplates,
         ...ImportsManager.app_constant.fileTemplates,
         ...ImportsManager.global_variables.fileTemplates,
         ...ImportsManager.image_paths.fileTemplates,
         ...ImportsManager.static_data.fileTemplates,
-        ...ImportsManager.language_services.fileTemplates,
         ...ImportsManager.custom_snackbar.fileTemplates,
         ...ImportsManager.custom_snakbar.fileTemplates,
         ...ImportsManager.shared_pref_helper.fileTemplates,
         ...ImportsManager.validation.fileTemplates,
         ...ImportsManager.custom_button.fileTemplates,
         ...ImportsManager.custom_textfield.fileTemplates,
-        ...ImportsManager.api_endpoints.fileTemplates,
-        ...ImportsManager.failure.fileTemplates,
-        ...ImportsManager.type_def.fileTemplates,
-        ...ImportsManager.api_helper.fileTemplates,
-        ...ImportsManager.strings.fileTemplates,
         ...ImportsManager.error_route.fileTemplates,
         ...ImportsManager.route_transition.fileTemplates,
         ...ImportsManager.routes.fileTemplates,
@@ -53,8 +46,6 @@ export function activate(context: vscode.ExtensionContext) {
       const architecture = {
         lib: [
           { files: ["main.dart"] },
-          { files: ["firebase_options.dart"] },
-          { folder: "generated", files: ["locales.g.dart"] },
           { folder: "src", files: [] },
           { folder: "src/common", files: [] },
           {
@@ -69,7 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
           { folder: "src/common/providers", files: [] },
           {
             folder: "src/common/services/language",
-            files: ["language_services.dart"],
+            files: [],
           },
           {
             folder: "src/common/utils",
@@ -77,7 +68,6 @@ export function activate(context: vscode.ExtensionContext) {
               "custom_snackbar.dart",
               "custom_snakbar.dart",
               "shared_pref_helper.dart",
-              "validation.dart",
             ],
           },
           {
@@ -85,12 +75,8 @@ export function activate(context: vscode.ExtensionContext) {
             files: ["custom_button.dart", "custom_textfield.dart"],
           },
           { folder: "src/features", files: [] },
-          {
-            folder: "src/core",
-            files: ["api_helper.dart", "failure.dart", "type_def.dart"],
-          },
+
           { folder: "src/models", files: [] },
-          { folder: "src/res", files: ["api_endpoints.dart", "strings.dart"] },
           {
             folder: "src/router",
             files: ["error_route.dart", "route_transition.dart", "routes.dart"],
