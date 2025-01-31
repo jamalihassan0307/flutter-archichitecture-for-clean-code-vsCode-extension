@@ -3,7 +3,6 @@ export class custom_button {
     custom_button: ` 
 import '../../../../src/common/constants/global_variables.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -53,7 +52,7 @@ class CustomButton extends StatelessWidget {
             ),
             Flexible(
               child: Text(
-                text.tr,
+                text,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: textTheme(context).bodyLarge?.copyWith(

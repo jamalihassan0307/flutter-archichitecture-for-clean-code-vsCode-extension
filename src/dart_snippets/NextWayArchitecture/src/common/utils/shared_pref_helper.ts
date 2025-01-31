@@ -1,9 +1,8 @@
 export class shared_pref_helper {
   public static fileTemplates: { [key: string]: string } = {
-    shared_pref_helper: ` import '../../../../src/common/constants/global_variables.dart';
-
+    shared_pref_helper: ` 
 import 'package:shared_preferences/shared_preferences.dart';
- import '../../../src/common/constants/static_data.dart';
+
 
 
 class SharedPrefHelper {
@@ -11,16 +10,7 @@ class SharedPrefHelper {
 
   static getInitialValue() async {
     _prefs = await SharedPreferences.getInstance();
-    StaticData.language = await getString(languageText) ?? '';
-    StaticData.isFirstTime = await getBool(isFirstTimeText) ?? true;
-    StaticData.isIndividual = await getBool(isIndividualText) ?? true;
-    StaticData.isLoggedIn = await getBool(isLoggedInText) ?? false;
-    StaticData.isFormFilled = await getBool(isFormFilledText) ?? false;
-    StaticData.isUserInterestSelected =
-        await getBool(isUserInterestSelectedText) ?? false;
-    StaticData.formIndex = await getInt(isFormFilledIndexText) ?? 0;
-    StaticData.token = await getString(tokenText) ?? '';
-    StaticData.address = await getString(addressText) ?? '';
+   
   
   }
 
