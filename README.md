@@ -172,7 +172,7 @@ Contributions are welcome! Feel free to:
 5. Open a Pull Request
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/jamalihassan0307">Jamali Hassan</a>
+  Made with ❤️ by <a href="https://github.com/jamalihassan0307">Jam ali Hassan</a>
 </p>
 
 # 💡 Key Benefits
