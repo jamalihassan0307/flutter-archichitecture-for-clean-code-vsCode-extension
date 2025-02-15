@@ -10,7 +10,7 @@
     <a href="https://github.com/jamalihassan0307" target="_blank">
         <img alt="" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align:center" />
     </a>
-    <a href="https://www.linkedin.com/in/ali-hassan-b17815281/" target="_blank">
+    <a href="https://www.linkedin.com/in/jamalihassan0307/" target="_blank">
         <img alt="" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align:center" />
     </a>
 </p>
