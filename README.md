@@ -1,129 +1,191 @@
-Here’s the updated `README.md` based on the new functionality provided by your VS Code extension:
+<div align="center">
+      <h1> <img src="https://img.icons8.com/color/48/000000/flutter.png" width="80px"><br/>Flutter Architecture Generator</h1>
+      <h3>A Powerful VS Code Extension for Clean Flutter Architecture</h3>
+</div>
 
----
+<p align="center">
+    <a href="https://marketplace.visualstudio.com/items?itemName=7jsscmp4zaio626xj6rxx77zhgeosa4yry5vhbr3hu7gcgt4k73q.flutter-archichitecture" target="_blank">
+        <img alt="" src="https://img.shields.io/visual-studio-marketplace/v/7jsscmp4zaio626xj6rxx77zhgeosa4yry5vhbr3hu7gcgt4k73q.flutter-archichitecture?style=for-the-badge&logo=visualstudiocode&logoColor=white&label=VS%20Code%20Marketplace" style="vertical-align:center" />
+    </a>
+    <a href="https://github.com/jamalihassan0307" target="_blank">
+        <img alt="" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align:center" />
+    </a>
+    <a href="https://www.linkedin.com/in/ali-hassan-b17815281/" target="_blank">
+        <img alt="" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align:center" />
+    </a>
+</p>
 
-# Flutter Architecture Generator for Clean Code
+# 📌 Overview
 
-Flutter Architecture Generator for Clean Code is a Visual Studio Code extension that helps developers quickly scaffold a Flutter project with a clean architecture using pre-defined templates. It creates essential files and folders with boilerplate code and updates the `pubspec.yaml` with the required dependencies.
+Flutter Architecture Generator is a VS Code extension that helps developers quickly scaffold Flutter projects with clean architecture patterns. It supports both NextWay Architecture and MVC patterns, providing pre-configured templates and essential dependencies.
 
-## Features
+# 🚀 Features
 
-### 1. Generate Architecture
+## NextWay Architecture
 
-The extension allows you to generate a well-organized Flutter project structure based on a clean architecture pattern. It supports the following folder and file structure:
+Generate a complete Flutter project structure with:
 
 ```bash
--- lib
-    |-- main.dart
-    |-- firebase_options.dart
-    |-- generated
-        |-- locales.g.dart
-    |-- src
-        |-- common
-            |-- constants
-                |-- app_constant.dart
-                |-- global_variables.dart
-                |-- image_paths.dart
-                |-- static_data.dart
-            |-- services
-                |-- language
-                    |-- language_services.dart
-            |-- utils
-                |-- custom_snackbar.dart
-                |-- custom_snakbar.dart
-                |-- shared_pref_helper.dart
-                |-- validation.dart
-            |-- widgets
-                |-- custom_button.dart
-                |-- custom_textfield.dart
-        |-- core
-            |-- api_helper.dart
-            |-- failure.dart
-            |-- type_def.dart
-        |-- res
-            |-- api_endpoints.dart
-            |-- strings.dart
-        |-- router
-            |-- error_route.dart
-            |-- route_transition.dart
-            |-- routes.dart
-        |-- theme
-            |-- app_theme.dart
-            |-- color_scheme.dart
-            |-- widget_theme
-                |-- tab_bar_theme.dart
-                |-- text_theme.dart
+lib/
+  ├── main.dart
+  ├── src/
+  │   ├── common/
+  │   │   ├── constants/
+  │   │   ├── services/
+  │   │   ├── utils/
+  │   │   └── widgets/
+  │   ├── core/
+  │   ├── features/
+  │   ├── router/
+  │   └── theme/
 ```
 
-The generated structure promotes modularity and reusability, which enhances project scalability and maintainability.
+## MVVM Architecture
 
-### 2. Automatic Dependency Management
+Create a modern MVVM structure with:
 
-When you generate the project structure, the extension also updates your `pubspec.yaml` file with essential dependencies for Flutter development. The following packages are added:
+```bash
+lib/
+  ├── models/
+  │   └── data_models/
+  ├── views/
+  │   ├── screens/
+  │   └── widgets/
+  ├── viewmodels/
+  ├── services/
+  │   ├── api/
+  │   └── local/
+  ├── utils/
+  └── core/
+      ├── constants/
+      ├── theme/
+      └── routes/
+```
+
+## MVC Architecture
+
+Create a clean MVC structure with:
+
+```bash
+lib/
+  ├── controllers/
+  ├── models/
+  ├── views/
+  ├── core/
+  │   ├── constants/
+  │   ├── theme/
+  │   └── routes/
+  └── data/
+      ├── network/
+      └── app_exceptions/
+```
+
+## Feature Generator
+
+Quickly scaffold new features with all necessary files:
+
+```bash
+lib/src/features/your_feature/
+  ├── controllers/
+  │   ├── your_feature_controller.dart
+  │   └── your_feature_state.dart
+  ├── models/
+  ├── pages/
+  └── repository/
+      └── your_feature_repository.dart
+```
+
+# 🛠️ Tech Stack
+
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-%23007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+# 📦 Installation
+
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X)
+3. Search for "flutter-archichitecture" Or "NextWay Architecture"
+4. Click Install
+
+Or install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=7jsscmp4zaio626xj6rxx77zhgeosa4yry5vhbr3hu7gcgt4k73q.flutter-archichitecture)
+
+# 🎯 Usage
+
+1. Open Command Palette (Ctrl+Shift+P)
+2. Choose your architecture or feature:
+   - Type "Create NextWay's Architecture" for NextWay pattern
+   - Type "Create MVVM Architecture" for MVVM pattern
+   - Type "Create MVC Architecture" for MVC pattern
+   - Type "Create Feature" to generate a new feature structure
+3. For feature generation:
+   - Enter the feature name when prompted
+   - The extension will create all necessary files with boilerplate code
+4. The extension will:
+   - Create the folder structure
+   - Generate boilerplate files
+   - Add required dependencies
+   - Set up state management
+   - Configure routing (if applicable)
+
+# 📚 Included Dependencies
 
 ```yaml
 dependencies:
+  # UI & Styling
   google_fonts: ^6.2.1
-  provider: ^6.1.2
-  device_preview: ^1.2.0
   flutter_svg: ^2.0.10+1
+
+  # State Management
+  provider: ^6.1.2
   flutter_riverpod: ^2.0.0
-  image_picker: ^1.1.2
-  go_router: ^14.2.2
-  # url_launcher: ^6.3.0
   get: ^4.6.6
+
+  # Navigation
+  go_router: ^14.2.2
+
+  # Networking
+  dio: ^5.4.0
+
+  # Utils
+  device_preview: ^1.2.0
+  image_picker: ^1.1.2
   loader_overlay: ^4.0.1
   fpdart: ^1.1.0
-  firebase_core: ^3.3.0
+
+  # Storage
   shared_preferences: ^2.3.2
+
+  # Firebase
+  firebase_core: ^3.3.0
 ```
 
-These dependencies enable a variety of functionality, such as Firebase integration, authentication, state management, routing, UI utilities, and more.
+# 🤝 Contributing
 
-### 3. Boilerplate Code Templates
+Contributions are welcome! Feel free to:
 
-This extension provides pre-defined code templates for various commonly used files like:
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
-- `main.dart`
-- `firebase_options.dart`
-- **Constants** (e.g., `app_constant.dart`, `global_variables.dart`)
-- **Services** (e.g., `language_services.dart`)
-- **Utilities** (e.g., `custom_snackbar.dart`, `shared_pref_helper.dart`)
-- **Widgets** (e.g., `custom_button.dart`, `custom_textfield.dart`)
-- **Core Files** (e.g., `api_helper.dart`, `failure.dart`)
-- **Router** (e.g., `error_route.dart`, `routes.dart`)
-- **Theme** (e.g., `app_theme.dart`, `color_scheme.dart`, `text_theme.dart`)
-
-### 4. Easy Setup
-
-To use the extension:
-
-1. Open your Flutter project in Visual Studio Code.
-2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS).
-3. Type `Flutter: Create NextWay's Architecture` and press Enter.
-4. The extension will create the folder and file structure and update the `pubspec.yaml` file with the necessary dependencies.
-
-### 5. Pre-configured File Templates
-
-The generated files come with pre-configured code templates that are ready to use, making it easy to start working on your project without worrying about the initial setup.
-
-## Installation
-
-You can install this extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/).
-
-Alternatively, you can clone this repository and install the extension manually using the following commands:
-
-```bash
-git clone https://github.com/jamalihassan0307/flutter-architecture-generator.git
-cd flutter-architecture-generator
-vsce package
-code --install-extension flutter-architecture-generator-0.0.1.vsix
-```
-
-## Contribution
-
-Contributions are welcome! Feel free to fork this repository, make improvements, and submit pull requests.
-
-## License
+# 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/jamalihassan0307">Jamali Hassan</a>
+</p>
+
+# 💡 Key Benefits
+
+- **Multiple Architecture Patterns**: Choose between NextWay, MVVM, or MVC based on your project needs
+- **Feature-First Development**: Quickly scaffold new features with proper structure
+- **Clean Architecture**: Promotes separation of concerns and maintainable code
+- **Boilerplate Reduction**: Save time with pre-configured templates
+- **Best Practices**: Follows Flutter/Dart coding standards
+- **State Management**: Integrated solutions with Provider, Riverpod, and GetX
