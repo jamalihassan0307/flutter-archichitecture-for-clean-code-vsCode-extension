@@ -19,8 +19,6 @@ export class YamalUtility {
     get: "^4.6.6",
   };
 
-  
-
   public static updatePubspecYaml(rootPath: string) {
     const pubspecPath = path.join(rootPath, "pubspec.yaml");
 

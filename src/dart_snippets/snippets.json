@@ -1,363 +1,289 @@
 {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
   "aaaFlutterToast": {
-      "prefix": "aaaFlutterToast",
-      "body": [
-          "Fluttertoast.showToast(msg: \"$1 !\",backgroundColor: Colors.red,textColor: Colors.white,gravity: ToastGravity.BOTTOM,fontSize: 17,timeInSecForIosWeb: 1,toastLength: Toast.LENGTH_LONG,);",
-          "$2"
-      ],
-      "description": "FlutterToast"
+    "prefix": "aaaFlutterToast",
+    "body": [
+      "Fluttertoast.showToast(msg: \"$1 !\",backgroundColor: Colors.red,textColor: Colors.white,gravity: ToastGravity.BOTTOM,fontSize: 17,timeInSecForIosWeb: 1,toastLength: Toast.LENGTH_LONG,);",
+      "$2"
+    ],
+    "description": "FlutterToast"
   },
-  
+
   "aaainkWell+Navigator": {
-      "prefix": "aaainkWell+Navigator",
-      "body": [
-          "InkWell(onTap: () {Navigator.push(context,MaterialPageRoute(builder: (context) => $1,));},),",
-          "$2"
-
-
-
-
-      ],
-      "description": "Log output to console"
+    "prefix": "aaainkWell+Navigator",
+    "body": [
+      "InkWell(onTap: () {Navigator.push(context,MaterialPageRoute(builder: (context) => $1,));},),",
+      "$2"
+    ],
+    "description": "Log output to console"
   },
-  
+
   "aaaMediaQurey": {
-      "prefix": "aaaMediaQurey",
-      "body": [
-          "var height, width;",
-          "@override",
-          "Widget build(BuildContext context) {",
-          "height = MediaQuery.of(context).size.height;",
-          "width = MediaQuery.of(context).size.width;",
-          "$2"
-      ],
-      "description": "Log output to console"
+    "prefix": "aaaMediaQurey",
+    "body": [
+      "var height, width;",
+      "@override",
+      "Widget build(BuildContext context) {",
+      "height = MediaQuery.of(context).size.height;",
+      "width = MediaQuery.of(context).size.width;",
+      "$2"
+    ],
+    "description": "Log output to console"
   },
- 
 
   "aaacustom_button": {
-      "prefix": "aaacustombutton",
-      "body": [
-          "Center(",
-          "child: Card(",
-          "elevation: 5,",
-          "shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(50)),",
-          "child: InkWell(",
-          "onTap: () {},",
-          "child: Container(height: height * 0.05,width: width * 0.4,",
-          "  decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color: Colors.$1,),",
-          "child: Center(",
-          "child: Text('$2',style: TextStyle(color: Colors.white,fontSize: height * 0.02,fontWeight: FontWeight.w500,),",
-          "),),),),),),",
-          "$3"
-      ],
-      "description": "Log output to console"
+    "prefix": "aaacustombutton",
+    "body": [
+      "Center(",
+      "child: Card(",
+      "elevation: 5,",
+      "shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(50)),",
+      "child: InkWell(",
+      "onTap: () {},",
+      "child: Container(height: height * 0.05,width: width * 0.4,",
+      "  decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color: Colors.$1,),",
+      "child: Center(",
+      "child: Text('$2',style: TextStyle(color: Colors.white,fontSize: height * 0.02,fontWeight: FontWeight.w500,),",
+      "),),),),),),",
+      "$3"
+    ],
+    "description": "Log output to console"
   },
-  
-
-
-
 
   "aaapost ApI": {
-      "prefix": "aaapostApI",
-      "body": [
-          "try {",
-          "\tMap<String, dynamic> data = {};",
-          "\tdio.Response res = await httpClient().post(StaticVariables.$1 , data: data);",
-          "\tif (res.statusCode == 200) {",
-          "\t\tprint(res.data[\"status\"]);",
-          "\t}",
-          "} catch (e) {",
-          "\tprint(\"aaafhfyjf $$e\");",
-          "}"
-      ],
-      "description": "Send a Flutter notification via Dio"
+    "prefix": "aaapostApI",
+    "body": [
+      "try {",
+      "\tMap<String, dynamic> data = {};",
+      "\tdio.Response res = await httpClient().post(StaticVariables.$1 , data: data);",
+      "\tif (res.statusCode == 200) {",
+      "\t\tprint(res.data[\"status\"]);",
+      "\t}",
+      "} catch (e) {",
+      "\tprint(\"aaafhfyjf $$e\");",
+      "}"
+    ],
+    "description": "Send a Flutter notification via Dio"
   },
-  
+
   "aaaGet API": {
-      "prefix": "aaaGetAPI",
-      "body": [
-          "try {",
-          "\tdio.Response r = await httpClient().get(StaticVariables.$1 + e);",
-          "\tif (r.statusCode == 200) {",
-          "\t\t",
-          "\t\tupdate();",
-          "\t}",
-          "} on Exception catch (e) {",
-          "\tprint(e);",
-          "}"
-      ],
-      "description": "Fetch data from a Flutter API using Dio"
+    "prefix": "aaaGetAPI",
+    "body": [
+      "try {",
+      "\tdio.Response r = await httpClient().get(StaticVariables.$1 + e);",
+      "\tif (r.statusCode == 200) {",
+      "\t\t",
+      "\t\tupdate();",
+      "\t}",
+      "} on Exception catch (e) {",
+      "\tprint(e);",
+      "}"
+    ],
+    "description": "Fetch data from a Flutter API using Dio"
   },
-  
+
   "aaashowDialog": {
-      "prefix": "aaashowDialog",
-      "body": [
-          "Future<void> $1Dialog(BuildContext context) async {",
-          "\treturn showDialog(",
-          "\t\tcontext: context,",
-          "\t\tbuilder: (BuildContext context) {",
-          "\t\t\tvar size = MediaQuery.of(context).size;",
-          "\t\t\treturn Theme(",
-          "\t\t\t\tdata: ThemeData(",
-          "\t\t\t\t\tcardColor: Colors.white,",
-          "\t\t\t\t),",
-          "\t\t\t\tchild: StatefulBuilder(builder: (context, state) {",
-          "\t\t\t\t\treturn AlertDialog(",
-          "\t\t\t\t\t\televation: 10,",
-          "\t\t\t\t\t\tshadowColor: Colors.white,",
-          "\t\t\t\t\t\tbackgroundColor: Colors.white,",
-          "\t\t\t\t\t\tshape: RoundedRectangleBorder(",
-          "\t\t\t\t\t\t\tborderRadius: BorderRadius.circular(20)",
-          "\t\t\t\t\t\t),",
-          "\t\t\t\t\t\ttitle: Row(",
-          "\t\t\t\t\t\t\tmainAxisAlignment: MainAxisAlignment.spaceBetween,",
-          "\t\t\t\t\t\t\tchildren: [",
-          "\t\t\t\t\t\t\t\tText(",
-          "\t\t\t\t\t\t\t\t\t' $2 :',",
-          "\t\t\t\t\t\t\t\t\tstyle: TextStyle(",
-          "\t\t\t\t\t\t\t\t\t\tfontWeight: FontWeight.bold,",
-          "\t\t\t\t\t\t\t\t\t\tcolor: AppTheme.primary,",
-          "\t\t\t\t\t\t\t\t\t),",
-          "\t\t\t\t\t\t\t\t),",
-          "\t\t\t\t\t\t\t\tInkWell(",
-          "\t\t\t\t\t\t\t\t\tonTap: () {",
-          "\t\t\t\t\t\t\t\t\tNavigator.pop(context);",
-          "\t\t\t\t\t\t\t\t},",
-          "\t\t\t\t\t\t\t\tchild: const Icon(Icons.cancel_outlined)",
-          "\t\t\t\t\t\t\t)",
-          "\t\t\t\t\t\t],",
-          "\t\t\t\t\t\tcontent: SizedBox(",
-          "\t\t\t\t\t\t\theight: size.height,",
-          "\t\t\t\t\t\t\twidth: size.width,",
-          "\t\t\t\t\t\t\tchild: Row(",
-          "\t\t\t\t\t\t\t\tmainAxisAlignment: MainAxisAlignment.spaceEvenly,",
-          "\t\t\t\t\t\t\t\tchildren: [",
-          "\t\t\t\t\t\t\t\t\tInkWell(",
-          "\t\t\t\t\t\t\t\t\t\tchild: Card(",
-          "\t\t\t\t\t\t\t\t\t\t\tshadowColor: AppTheme.primary,",
-          "\t\t\t\t\t\t\t\t\t\t\televation: 7,",
-          "\t\t\t\t\t\t\t\t\t\t\tshape: RoundedRectangleBorder(",
-          "\t\t\t\t\t\t\t\t\t\t\t\tborderRadius: BorderRadius.circular(7)",
-          "\t\t\t\t\t\t\t\t\t\t\t),",
-          "\t\t\t\t\t\t\t\t\t\t\tchild: Container(",
-          "\t\t\t\t\t\t\t\t\t\t\t\theight: size.height,",
-          "\t\t\t\t\t\t\t\t\t\t\t\twidth: size.width,",
-          "\t\t\t\t\t\t\t\t\t\t\t\tdecoration: BoxDecoration(",
-          "\t\t\t\t\t\t\t\t\t\t\t\t\tcolor: Colors.white,",
-          "\t\t\t\t\t\t\t\t\t\t\t\t\tborderRadius: BorderRadius.circular(7)",
-          "\t\t\t\t\t\t\t\t\t\t\t\t),),)],),);},);},);}"
-      ],
-      "description": "Show a custom dialog in Flutter"
+    "prefix": "aaashowDialog",
+    "body": [
+      "Future<void> $1Dialog(BuildContext context) async {",
+      "\treturn showDialog(",
+      "\t\tcontext: context,",
+      "\t\tbuilder: (BuildContext context) {",
+      "\t\t\tvar size = MediaQuery.of(context).size;",
+      "\t\t\treturn Theme(",
+      "\t\t\t\tdata: ThemeData(",
+      "\t\t\t\t\tcardColor: Colors.white,",
+      "\t\t\t\t),",
+      "\t\t\t\tchild: StatefulBuilder(builder: (context, state) {",
+      "\t\t\t\t\treturn AlertDialog(",
+      "\t\t\t\t\t\televation: 10,",
+      "\t\t\t\t\t\tshadowColor: Colors.white,",
+      "\t\t\t\t\t\tbackgroundColor: Colors.white,",
+      "\t\t\t\t\t\tshape: RoundedRectangleBorder(",
+      "\t\t\t\t\t\t\tborderRadius: BorderRadius.circular(20)",
+      "\t\t\t\t\t\t),",
+      "\t\t\t\t\t\ttitle: Row(",
+      "\t\t\t\t\t\t\tmainAxisAlignment: MainAxisAlignment.spaceBetween,",
+      "\t\t\t\t\t\t\tchildren: [",
+      "\t\t\t\t\t\t\t\tText(",
+      "\t\t\t\t\t\t\t\t\t' $2 :',",
+      "\t\t\t\t\t\t\t\t\tstyle: TextStyle(",
+      "\t\t\t\t\t\t\t\t\t\tfontWeight: FontWeight.bold,",
+      "\t\t\t\t\t\t\t\t\t\tcolor: AppTheme.primary,",
+      "\t\t\t\t\t\t\t\t\t),",
+      "\t\t\t\t\t\t\t\t),",
+      "\t\t\t\t\t\t\t\tInkWell(",
+      "\t\t\t\t\t\t\t\t\tonTap: () {",
+      "\t\t\t\t\t\t\t\t\tNavigator.pop(context);",
+      "\t\t\t\t\t\t\t\t},",
+      "\t\t\t\t\t\t\t\tchild: const Icon(Icons.cancel_outlined)",
+      "\t\t\t\t\t\t\t)",
+      "\t\t\t\t\t\t],",
+      "\t\t\t\t\t\tcontent: SizedBox(",
+      "\t\t\t\t\t\t\theight: size.height,",
+      "\t\t\t\t\t\t\twidth: size.width,",
+      "\t\t\t\t\t\t\tchild: Row(",
+      "\t\t\t\t\t\t\t\tmainAxisAlignment: MainAxisAlignment.spaceEvenly,",
+      "\t\t\t\t\t\t\t\tchildren: [",
+      "\t\t\t\t\t\t\t\t\tInkWell(",
+      "\t\t\t\t\t\t\t\t\t\tchild: Card(",
+      "\t\t\t\t\t\t\t\t\t\t\tshadowColor: AppTheme.primary,",
+      "\t\t\t\t\t\t\t\t\t\t\televation: 7,",
+      "\t\t\t\t\t\t\t\t\t\t\tshape: RoundedRectangleBorder(",
+      "\t\t\t\t\t\t\t\t\t\t\t\tborderRadius: BorderRadius.circular(7)",
+      "\t\t\t\t\t\t\t\t\t\t\t),",
+      "\t\t\t\t\t\t\t\t\t\t\tchild: Container(",
+      "\t\t\t\t\t\t\t\t\t\t\t\theight: size.height,",
+      "\t\t\t\t\t\t\t\t\t\t\t\twidth: size.width,",
+      "\t\t\t\t\t\t\t\t\t\t\t\tdecoration: BoxDecoration(",
+      "\t\t\t\t\t\t\t\t\t\t\t\t\tcolor: Colors.white,",
+      "\t\t\t\t\t\t\t\t\t\t\t\t\tborderRadius: BorderRadius.circular(7)",
+      "\t\t\t\t\t\t\t\t\t\t\t\t),),)],),);},);},);}"
+    ],
+    "description": "Show a custom dialog in Flutter"
   },
   "aaatextsizecolor": {
-      "prefix": "aaatextsizecolor",
-      "body": ["Text(\"$1\", style: const TextStyle(fontSize: 18,color:Colors.white)),"],
-      "description": "aaatextsizecolor"
-  }
-  ,
-  
+    "prefix": "aaatextsizecolor",
+    "body": [
+      "Text(\"$1\", style: const TextStyle(fontSize: 18,color:Colors.white)),"
+    ],
+    "description": "aaatextsizecolor"
+  },
   "aaaContainer with Decoration and BorderRadius": {
-      "prefix": "aaaContainerDecoration",
-      "body": [
-          "Container(",
-          "\tdecoration: BoxDecoration(",
-          "\t\tcolor: Colors.white,",
-          "\t\tborderRadius: BorderRadius.circular(10),",
-          "\t),",
-          "\tchild: $1",
-          "),"
-      ],
-      "description": "Create a Container with BoxDecoration and BorderRadius in Flutter"
+    "prefix": "aaaContainerDecoration",
+    "body": [
+      "Container(",
+      "\tdecoration: BoxDecoration(",
+      "\t\tcolor: Colors.white,",
+      "\t\tborderRadius: BorderRadius.circular(10),",
+      "\t),",
+      "\tchild: $1",
+      "),"
+    ],
+    "description": "Create a Container with BoxDecoration and BorderRadius in Flutter"
   },
-  
+
   "aaaSH": {
-      "prefix": "aaaSH",
-      "body": ["SizedBox(height:height*0.02$1),"],
-      "description": "Create a SizedBox widget in one line in Flutter"
+    "prefix": "aaaSH",
+    "body": ["SizedBox(height:height*0.02$1),"],
+    "description": "Create a SizedBox widget in one line in Flutter"
   },
-  
+
   "aaaSW": {
-      "prefix": "aaaSW",
-      "body": ["SizedBox(width:width*0.02$1),"],
-      "description": "Create a SizedBox widget in one line in Flutter"
+    "prefix": "aaaSW",
+    "body": ["SizedBox(width:width*0.02$1),"],
+    "description": "Create a SizedBox widget in one line in Flutter"
   },
-  
+
   "aaacontroller": {
-      "prefix": "aaacontroller",
-      "body": [
-              "import 'package:get/get.dart';",
-              "",
-              "class $1 extends GetxController {",
-              "static $1 get to => Get.find();",
-              "$2",
-              "",
-              "",
-              "}"
-         
-         
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaacontroller",
+    "body": [
+      "import 'package:get/get.dart';",
+      "",
+      "class $1 extends GetxController {",
+      "static $1 get to => Get.find();",
+      "$2",
+      "",
+      "",
+      "}"
+    ],
+    "description": "Log output to console"
+  },
   "aaapop": {
-      "prefix": "aaapop",
-      "body": [
-              " Navigator.pop(context);",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaapop",
+    "body": [" Navigator.pop(context);", ""],
+    "description": "Log output to console"
+  },
   "aaapush": {
-      "prefix": "aaapush",
-      "body": [
-              " Navigator.push(context,MaterialPageRoute(builder: (context) => $1,));",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaapush",
+    "body": [
+      " Navigator.push(context,MaterialPageRoute(builder: (context) => $1,));",
+      ""
+    ],
+    "description": "Log output to console"
+  },
   "aaatextcontroller": {
-      "prefix": "aaatextcontroller",
-      "body": [
-              "  TextEditingController $1 = TextEditingController();",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaatextcontroller",
+    "body": ["  TextEditingController $1 = TextEditingController();", ""],
+    "description": "Log output to console"
+  },
   "aaaresponsivecondition": {
-      "prefix": "aaaresponsivecondition",
-      "body": [
-              "MediaQuery.of(context).size.width >= 650?$1:",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaaresponsivecondition",
+    "body": ["MediaQuery.of(context).size.width >= 650?$1:", ""],
+    "description": "Log output to console"
+  },
   "aaadio": {
-      "prefix": "aaadio",
-      "body": [
-              "import 'package:dio/dio.dart' as dio;",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaadio",
+    "body": ["import 'package:dio/dio.dart' as dio;", ""],
+    "description": "Log output to console"
+  },
   "aaaappTheme": {
-      "prefix": "aaaappTheme",
-      "body": [
-              "AppTheme.primary,",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaaappTheme",
+    "body": ["AppTheme.primary,", ""],
+    "description": "Log output to console"
+  },
   "aaaicon": {
-      "prefix": "aaaicon",
-      "body": [
-              "Icon(Icons.home,color: Colors.black,size: width * 0.04, ),",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
+    "prefix": "aaaicon",
+    "body": ["Icon(Icons.home,color: Colors.black,size: width * 0.04, ),", ""],
+    "description": "Log output to console"
+  },
   "aaaborderRadius": {
-      "prefix": "aaaborderRadius",
-      "body": [
-              "borderRadius: BorderRadius.circular(10),",
-              ""
-      ],
-      "description": "Log output to console"
-  }
-  ,
- 
+    "prefix": "aaaborderRadius",
+    "body": ["borderRadius: BorderRadius.circular(10),", ""],
+    "description": "Log output to console"
+  },
   "aaastreamBuilder": {
-      "prefix": "aaastreamBuilder",
-      "body": [
-         " StreamBuilder(",
-          "stream: FirebaseFirestore.instance.collection('clubs').doc(StaticData.to.clubeid)",
-            "  .collection(\"users\").where(\"position\",arrayContains: widget.subteam!.position![index]).snapshots(),",
-         " builder:(BuildContext context,snapshot) {",
-            "if (snapshot.connectionState ==ConnectionState.waiting) {"
-,                "return Center(child: SpinKit.loadSpinkit);}",
+    "prefix": "aaastreamBuilder",
+    "body": [
+      " StreamBuilder(",
+      "stream: FirebaseFirestore.instance.collection('clubs').doc(StaticData.to.clubeid)",
+      "  .collection(\"users\").where(\"position\",arrayContains: widget.subteam!.position![index]).snapshots(),",
+      " builder:(BuildContext context,snapshot) {",
+      "if (snapshot.connectionState ==ConnectionState.waiting) {",
+      "return Center(child: SpinKit.loadSpinkit);}",
 
+      " if (snapshot.hasError) {return Text('Error: /${snapshot.error}');}",
 
-           " if (snapshot.hasError) {return Text('Error: /${snapshot.error}');}",
-
-
-            "",
-             " if (snapshot.data!.docs.length == 0 &&snapshot.data!.docs.isEmpty) {",
-             "return Container();",
-           " } else {",
-              "return Container();}}",
-");",
-"$1"
-      ],
-      "description": "Log output to console"
+      "",
+      " if (snapshot.data!.docs.length == 0 &&snapshot.data!.docs.isEmpty) {",
+      "return Container();",
+      " } else {",
+      "return Container();}}",
+      ");",
+      "$1"
+    ],
+    "description": "Log output to console"
+  },
+  "Android Kotlin Flutter Firebase": {
+    "prefix": "aaafirebaseinitialize",
+    "body": [
+      "apply plugin: 'com.android.application'",
+      "apply plugin: 'kotlin-android'",
+      "apply plugin: 'com.google.gms.google-services'",
+      "apply from: \"$flutterRoot/packages/flutter_tools/gradle/flutter.gradle\"",
+      "",
+      "compileSdkVersion 33",
+      "",
+      "minSdkVersion 22",
+      "",
+      "implementation \"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version\"",
+      "implementation platform('com.google.firebase:firebase-bom:31.3.0')",
+      "implementation 'com.google.firebase:firebase-analytics-ktx'",
+      "",
+      "classpath 'com.android.tools.build:gradle:7.3.0'",
+      "classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"",
+      "classpath 'com.google.gms:google-services:4.3.15'",
+      "",
+      "package",
+      "firebase_Auth",
+      "firebase_core: ",
+      "firebase_auth:",
+      "cloud_firestore: ",
+      "void main() async {",
+      "  WidgetsFlutterBinding.ensureInitialized();",
+      "  await Firebase.initializeApp();",
+      "  runApp(const MyApp());",
+      "}"
+    ],
+    "description": "Android Kotlin Flutter Firebase Gradle Configuration"
   }
-  ,
- 
-      "Android Kotlin Flutter Firebase": {
-        "prefix": "aaafirebaseinitialize",
-        "body": [
-          "apply plugin: 'com.android.application'",
-          "apply plugin: 'kotlin-android'",
-          "apply plugin: 'com.google.gms.google-services'",
-          "apply from: \"$flutterRoot/packages/flutter_tools/gradle/flutter.gradle\"",
-          "",
-          "compileSdkVersion 33",
-          "",
-          "minSdkVersion 22",
-          "",
-          "implementation \"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version\"",
-          "implementation platform('com.google.firebase:firebase-bom:31.3.0')",
-          "implementation 'com.google.firebase:firebase-analytics-ktx'",
-          "",
-          "classpath 'com.android.tools.build:gradle:7.3.0'",
-          "classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"",
-          "classpath 'com.google.gms:google-services:4.3.15'",
-          "",
-          "package",
-          "firebase_Auth",
-          "firebase_core: ",
-          "firebase_auth:",
-          "cloud_firestore: ",
-          "void main() async {",
-          "  WidgetsFlutterBinding.ensureInitialized();",
-          "  await Firebase.initializeApp();",
-          "  runApp(const MyApp());",
-          "}"
-        ],
-        "description": "Android Kotlin Flutter Firebase Gradle Configuration"
-      }
-   
-   
- 
 }
-
-
-
-
-
-
-
-
-
-
-

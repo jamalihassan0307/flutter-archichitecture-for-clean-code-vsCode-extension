@@ -7,6 +7,7 @@ import { YamalUtility } from "./dart_snippets/NextWayArchitecture/utils/yamal_ut
 import { FeatureUtils } from "./dart_snippets/NextWayArchitecture/utils/feature_utils";
 import { ImportsManagerMvvm } from "./dart_snippets/MVVM/importsManager";
 import { MvvmYamalUtility } from "./dart_snippets/MVVM/mvvm_yamal_utils";
+import { MVCManager } from "./dart_snippets/MVCArchitecture/mvc_manager";
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -260,9 +261,26 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  let mvcDisposable = vscode.commands.registerCommand(
+    "flutter-archichitecture.createMVCArchitecture",
+    async () => {
+      // Get the workspace folder
+      const workspaceFolders = vscode.workspace.workspaceFolders;
+      if (!workspaceFolders) {
+        vscode.window.showErrorMessage("No workspace folder found.");
+        return;
+      }
+
+      // Use the first workspace folder as root path
+      const rootPath = workspaceFolders[0].uri.fsPath;
+      MVCManager.createMVCStructure(rootPath);
+    }
+  );
+
   context.subscriptions.push(featurecmd);
   context.subscriptions.push(disposable);
   context.subscriptions.push(mvvm);
+  context.subscriptions.push(mvcDisposable);
 }
 
 export function deactivate() {
